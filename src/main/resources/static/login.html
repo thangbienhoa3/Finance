@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Đăng nhập</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="card">
+    <h1>Đăng nhập</h1>
+    <p>Chào mừng bạn đến với hệ thống quản lí tài chính cá nhân</p>
+
+    <label for="username">Username</label>
+    <input id="username" placeholder="vd: thangbienhoa33" autocomplete="username"/>
+
+    <label for="password">Mật khẩu</label>
+    <input id="password" type="password" placeholder="••••••••" autocomplete="current-password"/>
+
+    <button id="btnLogin">Đăng nhập</button>
+    <div id="loginMsg" class="msg"></div>
+
+    <div class="row">
+        <span>Chưa có tài khoản?</span>
+        <a class="link" href="register.html">Đăng ký</a>
+    </div>
+</div>
+
+<script type = "module" src="js/auth/login.js"></script>
+
+</body>
+</html>

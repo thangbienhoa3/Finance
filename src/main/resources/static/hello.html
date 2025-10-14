@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Xin chào!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="card">
+    <h1 id="greeting">👋 Xin chào!</h1>
+    <p>Chúc bạn một ngày tràn đầy năng lượng 💪</p>
+
+    <button id="logout">Đăng xuất</button>
+</div>
+
+<script>
+    // 📦 Lấy username từ localStorage
+    const username = localStorage.getItem('username');
+
+    // 🎉 Nếu có username thì hiển thị
+    if (username) {
+        document.getElementById('greeting').textContent = `👋 Xin chào, ${username}!`;
+    } else {
+        window.location.href = 'login.html';
+    }
+
+    // 🚪 Xử lý logout
+    document.getElementById('logout').addEventListener('click', () => {
+        localStorage.removeItem('username'); // xóa user info
+        window.location.href = 'login.html';
+    });
+</script>
+</body>
+</html>
