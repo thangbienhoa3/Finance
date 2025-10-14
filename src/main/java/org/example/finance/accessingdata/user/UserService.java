@@ -16,6 +16,11 @@ public class UserService {
         u.setUsername(username);
         u.setPassword(password);
         u.setEmail(email);
+
+        if (repo.findByUsername(username) != null) {
+            return "User already exists";
+        }
+        
         repo.save(u);
         return "User registered successfully!";
     }
