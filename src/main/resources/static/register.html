@@ -3,34 +3,65 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Đăng ký</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Đăng ký | Sổ tay tài chính</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="card">
-    <h1>Đăng ký</h1>
-    <p>Tạo tài khoản mới nào </p>
 
-    <label for="r-username">Username</label>
-    <input id="r-username" placeholder="vd: thangbienhoa33" autocomplete="username"/>
+<body class="auth-body">
+<main class="auth-shell">
+    <section class="brand-panel">
+        <div>
+            <div class="brand-logo">
+                <span>₿</span>
+                <div>Sổ tay tài chính</div>
+            </div>
+            <div class="brand-badges">
+                <span class="brand-badge">Cloud Sync</span>
+                <span class="brand-badge">Security First</span>
+            </div>
+        </div>
 
-    <label for="r-email">Email</label>
-    <input id="r-email" type="email" placeholder="ban@gmail.com" autocomplete="email"/>
+        <div>
+            <h2>Tạo tài khoản để trải nghiệm dịch vụ của chúng tôi.</h2>
+            <p>Tiền của bạn là hạnh phúc của chúng tôi.</p>
+        </div>
 
-    <label for="r-password">Mật khẩu</label>
-    <input id="r-password" type="password" placeholder="••••••••" autocomplete="new-password"/>
 
-    <button id="btnRegister">Đăng ký</button>
-    <div id="regMsg" class="msg"></div>
+    </section>
 
-    <div class="row">
-        <span>Đã có tài khoản?</span>
-        <a class="link" href="/login.html">Đăng nhập</a>
-    </div>
-</div>
+    <section class="form-panel">
+        <header>
+            <span class="status-chip">Bắt đầu miễn phí</span>
+            <h1>Đăng ký tài khoản trong chưa đầy 1 phút</h1>
+            <p>Chúng tôi chỉ cần vài thông tin cơ bản để tạo hồ sơ và cá nhân hóa trải nghiệm quản lý tài chính của bạn.</p>
+        </header>
+
+        <div class="form-stack">
+            <div class="form-group">
+                <label for="r-username">Tên đăng nhập</label>
+                <input id="r-username" placeholder="vd: nguyenvana" autocomplete="username"/>
+            </div>
+            <div class="form-group">
+                <label for="r-email">Email</label>
+                <input id="r-email" type="email" placeholder="ban@gmail.com" autocomplete="email"/>
+            </div>
+            <div class="form-group">
+                <label for="r-password">Mật khẩu</label>
+                <input id="r-password" type="password" placeholder="Tối thiểu 6 ký tự" autocomplete="new-password"/>
+            </div>
+            <button id="btnRegister" class="primary-btn">Tạo tài khoản</button>
+            <div id="regMsg" class="msg"></div>
+        </div>
+
+        <div class="form-footer">
+            <span>Đã có tài khoản?</span>
+            <a class="link" href="login.html">Đăng nhập</a>
+        </div>
+        <p class="small-print">Chúng tôi cam kết bảo mật thông tin và chỉ dùng dữ liệu cho mục đích giúp bạn quản lý tài chính hiệu quả hơn.</p>
+    </section>
+</main>
 
 <script type="module" src="js/auth/register.js"></script>
-
 </body>
 </html>

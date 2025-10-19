@@ -3,29 +3,208 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Đăng nhập</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Dooto Finance | Hệ thống quản lí tài chính cá nhân</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="card">
-    <h1>Đăng nhập</h1>
-    <p>Chào mừng quay lại </p>
-
-    <label for="username">Username</label>
-    <input id="username" placeholder="vd: thangbienhoa33" autocomplete="username"/>
-
-    <label for="password">Mật khẩu</label>
-    <input id="password" type="password" placeholder="••••••••" autocomplete="current-password"/>
-
-    <button id="btnLogin">Đăng nhập</button>
-    <div id="loginMsg" class="msg"></div>
-
-    <div class="row">
-        <span>Chưa có tài khoản?</span>
-        <a class="link" href="/register.html">Đăng ký</a>
+<body class="landing-body">
+<header class="top-nav">
+    <div class="nav-inner max-container">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">₿</span>
+            <div class="brand-text">
+                <strong>Dooto Finance</strong>
+                <span>Quản lí tài chính cá nhân</span>
+            </div>
+        </a>
+        <nav class="primary-nav">
+            <a href="#tinh-nang">Tính năng</a>
+            <a href="#giai-phap">Giải pháp</a>
+            <a href="#khach-hang">Khách hàng</a>
+        </nav>
+        <div class="nav-actions">
+            <a class="nav-link" href="login.html">Đăng nhập</a>
+            <a class="btn primary" href="register.html">Bắt đầu miễn phí</a>
+        </div>
     </div>
-</div>
+</header>
 
+<main>
+    <section class="hero max-container">
+        <div class="hero-banner">
+            <div class="badge-row">
+                <span class="badge">Nền tảng AI</span>
+                <span class="badge badge-light">Phiên bản 5.0</span>
+            </div>
+            <h1>Kiểm soát toàn diện tài chính cá nhân của bạn</h1>
+            <p>Dooto Finance kết hợp tự động hoá chi tiêu, phân tích dòng tiền và tư vấn thông minh giúp bạn nhìn rõ mục tiêu,
+                kỉ luật ngân sách và gia tăng tài sản.</p>
+            <div class="cta-group">
+                <a class="btn white" href="register.html">Trải nghiệm bản demo</a>
+                <a class="btn ghost" href="login.html">Xem bảng điều khiển</a>
+            </div>
+            <div class="metrics">
+                <div class="metric">
+                    <strong>3,2M+</strong>
+                    <span>Giao dịch được đồng bộ hoá</span>
+                </div>
+                <div class="metric">
+                    <strong>92%</strong>
+                    <span>Người dùng đạt mục tiêu tiết kiệm</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-showcase">
+            <div class="hero-graphic">
+                <span class="hero-chip hero-chip--java">Tự động phân loại</span>
+                <span class="hero-chip hero-chip--ai">AI dự báo</span>
+                <span class="hero-chip hero-chip--cloud">Đa thiết bị</span>
+            </div>
+            <div class="schedule-card">
+                <div class="schedule-header">
+                    <span class="dot"></span>
+                    <span>Tổng quan hôm nay</span>
+                </div>
+                <ul class="schedule-list">
+                    <li class="schedule-item">
+                        <span class="time">08:00</span>
+                        <div>
+                            <strong>Bảng điều khiển số dư</strong>
+                            <span>Cập nhật ngân hàng, ví điện tử tức thời</span>
+                        </div>
+                    </li>
+                    <li class="schedule-item">
+                        <span class="time">12:30</span>
+                        <div>
+                            <strong>Cảnh báo chi tiêu vượt hạn mức</strong>
+                            <span>Push notification và email cá nhân hoá</span>
+                        </div>
+                    </li>
+                    <li class="schedule-item">
+                        <span class="time">20:15</span>
+                        <div>
+                            <strong>Gợi ý phân bổ đầu tư thông minh</strong>
+                            <span>Dựa trên hồ sơ rủi ro và mục tiêu tài chính</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="course-section max-container" id="tinh-nang">
+        <div class="section-header">
+            <h2>Tính năng siêu việt</h2>
+            <a class="section-link" href="#">Tải brochure</a>
+        </div>
+        <div class="course-grid">
+            <article class="course-card">
+                <div class="course-thumb course-thumb--blue"></div>
+                <div class="course-body">
+                    <span class="course-tag">Theo dõi 360°</span>
+                    <h3>Đồng bộ đa nguồn dữ liệu</h3>
+                    <p>Kết nối ngân hàng, ví điện tử, hóa đơn và thẻ tín dụng trong vài phút để hợp nhất dòng tiền cá nhân.</p>
+                    <div class="course-meta">
+                        <span>🔗 34+ ngân hàng &amp; ví</span>
+                        <span>⚡ Đồng bộ tức thời</span>
+                    </div>
+                </div>
+            </article>
+            <article class="course-card">
+                <div class="course-thumb course-thumb--purple"></div>
+                <div class="course-body">
+                    <span class="course-tag">AI Insight</span>
+                    <h3>Phân tích chi tiêu thông minh</h3>
+                    <p>Thuật toán AI tự động phân loại giao dịch, dự báo xu hướng chi tiêu và đưa ra cảnh báo sớm.</p>
+                    <div class="course-meta">
+                        <span>🤖 12 mô hình AI</span>
+                        <span>📈 Báo cáo thời gian thực</span>
+                    </div>
+                </div>
+            </article>
+            <article class="course-card">
+                <div class="course-thumb course-thumb--orange"></div>
+                <div class="course-body">
+                    <span class="course-tag">Goal Focus</span>
+                    <h3>Lập kế hoạch &amp; nhắc nhở mục tiêu</h3>
+                    <p>Tạo quỹ tiết kiệm, mô phỏng lộ trình và tự động chuyển tiền theo lịch bạn đặt ra.</p>
+                    <div class="course-meta">
+                        <span>🎯 8 mẫu mục tiêu</span>
+                        <span>🔔 Nhắc nhở đa kênh</span>
+                    </div>
+                </div>
+            </article>
+            <article class="course-card">
+                <div class="course-thumb course-thumb--teal"></div>
+                <div class="course-body">
+                    <span class="course-tag">Bảo mật chuẩn ngân hàng</span>
+                    <h3>Mã hóa end-to-end &amp; quyền riêng tư</h3>
+                    <p>Áp dụng chuẩn PCI DSS, xác thực đa lớp và tuỳ biến quyền truy cập cho từng thiết bị.</p>
+                    <div class="course-meta">
+                        <span>🔐 2FA mọi phiên</span>
+                        <span>🛡️ SOC 2 compliant</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="info-section max-container" id="giai-phap">
+        <div class="section-header">
+            <h2>Giải pháp toàn diện</h2>
+            <a class="section-link" href="#">Xem gói dịch vụ</a>
+        </div>
+        <div class="info-grid">
+            <article class="info-card">
+                <p>“Trợ lý tài chính Dooto nhắc mình chốt hoá đơn, theo dõi quỹ gia đình và đề xuất tối ưu thuế ngay trên điện thoại.”</p>
+                <div class="info-meta">
+                    <strong>Ngọc Bích</strong>
+                    <span>Giám đốc nhân sự</span>
+                </div>
+            </article>
+            <article class="info-card">
+                <p>“Phân tích AI xác định nhóm chi tiêu vượt chuẩn giúp mình cắt giảm 18% chi phí cố định chỉ sau 2 tháng.”</p>
+                <div class="info-meta">
+                    <strong>Tuấn Kiệt</strong>
+                    <span>Chuyên viên tài chính</span>
+                </div>
+            </article>
+            <article class="info-card">
+                <p>“Dashboard đầu tư tập trung hiển thị lời lỗ, phân bổ tài sản và khuyến nghị tái cân bằng rõ ràng từng ngày.”</p>
+                <div class="info-meta">
+                    <strong>Hải Đăng</strong>
+                    <span>Nhà đầu tư cá nhân</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="info-section max-container" id="khach-hang">
+        <div class="section-header">
+            <h2>Công nghệ cốt lõi</h2>
+            <a class="section-link" href="#">Khám phá tài liệu kỹ thuật</a>
+        </div>
+        <div class="news-grid">
+            <article class="news-card">
+                <span class="news-tag">Tự động hoá</span>
+                <h3>Workflow quản lí chi tiêu đa kênh</h3>
+                <p>Từ hoá đơn điện nước, thẻ tín dụng tới chi tiêu tiền mặt đều được ghi nhận, đối soát và nhắc nhở lịch thanh toán.</p>
+                <a class="news-link" href="#">Xem chi tiết &rarr;</a>
+            </article>
+            <article class="news-card">
+                <span class="news-tag">Phân tích</span>
+                <h3>Bảng điều khiển dự báo dòng tiền 12 tháng</h3>
+                <p>So sánh kịch bản thu chi, mô phỏng các sự kiện lớn và cung cấp đề xuất hành động ưu tiên.</p>
+                <a class="news-link" href="#">Khám phá dashboard &rarr;</a>
+            </article>
+            <article class="news-card">
+                <span class="news-tag">Bảo mật</span>
+                <h3>Hạ tầng mã hoá và quản trị truy cập</h3>
+                <p>Giám sát bảo mật 24/7, lưu vết truy cập và cảnh báo rủi ro theo thời gian thực cho mọi tài khoản.</p>
+                <a class="news-link" href="#">Tìm hiểu thêm &rarr;</a>
+            </article>
+        </div>
+    </section>
+</main>
 </body>
 </html>

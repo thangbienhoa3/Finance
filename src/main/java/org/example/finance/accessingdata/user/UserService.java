@@ -12,15 +12,15 @@ public class UserService {
 
 
     public String register(String username, String password, String email) {
+        if (repo.findByUsername(username).isPresent()) {
+            return "User already exists";
+        }
         User u = new User();
         u.setUsername(username);
         u.setPassword(password);
         u.setEmail(email);
 
-        if (repo.findByUsername(username) != null) {
-            return "User already exists";
-        }
-        
+
         repo.save(u);
         return "User registered successfully!";
     }

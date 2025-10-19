@@ -3,31 +3,75 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Đăng nhập</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Đăng nhập | Sổ tay tài chính</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="card">
-    <h1>Đăng nhập</h1>
-    <p>Chào mừng bạn đến với hệ thống quản lí tài chính cá nhân</p>
+<body class="auth-body">
+<main class="auth-shell">
+    <section class="brand-panel">
+        <div>
+            <div class="brand-logo">
+                <span>₿</span>
+                <div>Sổ tay tài chính</div>
+            </div>
+            <div class="brand-badges">
+                <span class="brand-badge">AI Insights</span>
+                <span class="brand-badge">Realtime Sync</span>
+            </div>
+        </div>
 
-    <label for="username">Username</label>
-    <input id="username" placeholder="vd: thangbienhoa33" autocomplete="username"/>
+        <div>
+            <h2>Hiểu rõ tài chính cá nhân của bạn với góc nhìn thông minh và sinh động.</h2>
+            <p>Trải nghiệm dashboard trực quan, phân tích xu hướng chi tiêu, nhắc nhở hóa đơn và kế hoạch tiết kiệm theo thời gian thực.</p>
+        </div>
 
-    <label for="password">Mật khẩu</label>
-    <input id="password" type="password" placeholder="••••••••" autocomplete="current-password"/>
+        <div class="feature-list">
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <div>
+                    <h3>Tổng quan tức thời</h3>
+                    <p>Biểu đồ tương tác giúp theo dõi tiền vào ra, ngân sách và khoản đầu tư chỉ trong một cú chạm.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔔</div>
+                <div>
+                    <h3>Nhắc việc thông minh</h3>
+                    <p>Luôn đúng hạn với cảnh báo hóa đơn, gợi ý phân bổ tiết kiệm và tự động hóa khoản chi lặp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <button id="btnLogin">Đăng nhập</button>
-    <div id="loginMsg" class="msg"></div>
+    <section class="form-panel">
+        <header>
+            <span class="status-chip">Chào mừng trở lại</span>
+            <h1>Đăng nhập để mở khóa bảng điều khiển cá nhân</h1>
+            <p>Nhập thông tin xác thực để tiếp tục hành trình quản lý tài chính thông minh cùng chúng tôi.</p>
+        </header>
 
-    <div class="row">
-        <span>Chưa có tài khoản?</span>
-        <a class="link" href="register.html">Đăng ký</a>
-    </div>
-</div>
+        <div class="form-stack">
+            <div class="form-group">
+                <label for="username">Tên đăng nhập</label>
+                <input id="username" placeholder="vd: nguyenvana" autocomplete="username"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input id="password" type="password" placeholder="••••••••" autocomplete="current-password"/>
+            </div>
+            <button id="btnLogin" class="primary-btn">Đăng nhập</button>
+            <div id="loginMsg" class="msg"></div>
+        </div>
 
-<script type = "module" src="js/auth/login.js"></script>
+        <div class="form-footer">
+            <span>Bạn chưa có tài khoản?</span>
+            <a class="link" href="register.html">Tạo tài khoản mới</a>
+        </div>
+        <p class="small-print">Bằng việc đăng nhập bạn đồng ý với điều khoản sử dụng và chính sách bảo mật của hệ thống.</p>
+    </section>
+</main>
 
+<script type="module" src="js/auth/login.js"></script>
 </body>
 </html>

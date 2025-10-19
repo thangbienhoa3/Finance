@@ -1,0 +1,190 @@
+.auth-body {
+    background: var(--page-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: clamp(2rem, 6vw, 4rem);
+}
+
+.auth-shell {
+    width: min(1000px, 94vw);
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    overflow: hidden;
+}
+
+.brand-panel {
+    background: linear-gradient(135deg, #2563eb, #6366f1);
+    color: #fff;
+    padding: clamp(2rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-weight: 600;
+}
+
+.brand-logo span {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.18);
+    display: grid;
+    place-items: center;
+    font-size: 1.4rem;
+}
+
+.brand-panel h2 {
+    font-size: 1.9rem;
+    line-height: 1.3;
+}
+
+.brand-panel p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+}
+
+.brand-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.brand-badge {
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.feature-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.feature {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+}
+
+.feature-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.22);
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+}
+
+.feature h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+}
+
+.feature p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.9rem;
+}
+
+.form-panel {
+    padding: clamp(2rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-panel header {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.status-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--primary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+.form-panel header h1 {
+    font-size: 1.85rem;
+    line-height: 1.3;
+}
+
+.form-panel header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.form-stack {
+    display: grid;
+    gap: 1.1rem;
+}
+
+.form-group {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    font-size: 0.95rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.msg {
+    min-height: 1.2rem;
+    font-size: 0.9rem;
+    color: #ef4444;
+}
+
+.form-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.link {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.small-print {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}

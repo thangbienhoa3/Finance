@@ -1,0 +1,54 @@
+@media (max-width: 960px) {
+    .primary-nav {
+        display: none;
+    }
+
+    .nav-actions {
+        margin-left: auto;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-banner {
+        order: -1;
+    }
+}
+
+@media (max-width: 640px) {
+    .nav-inner {
+        height: auto;
+        padding: 1.2rem 0;
+        flex-wrap: wrap;
+    }
+
+    .nav-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .btn {
+        padding: 0.7rem 1.3rem;
+    }
+
+    .hero-banner {
+        padding: 2rem;
+    }
+
+    .schedule-card {
+        padding: 1.4rem;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-panel {
+        padding: 2.2rem;
+    }
+}
