@@ -75,5 +75,19 @@ public class Transaction {
     public void setTransactionDate(LocalDate transactionDate) {this.transactionDate = transactionDate;}
     public LocalDateTime getCreatedAt() {return createdAt;}
     public void setCreatedAt(LocalDateTime createdAt) {this.createdAt = createdAt;}
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", userId=" + (user != null ? user.getId() : null) +
+                ", type=" + type +
+                ", amount=" + amount +
+                ", category='" + category + '\'' +
+                ", description='" + description + '\'' +
+                ", transactionDate=" + transactionDate +
+                ", createdAt=" + createdAt +
+                '}';
+    }
+
 
 }

@@ -56,6 +56,7 @@ class TransactionServiceTest {
 
         // Act: gọi phương thức service
         Transaction created = transactionService.createTransaction(request);
+        System.out.println(created.toString());
         // Assert 1: xác nhận hàm save() được gọi đúng 1 lần
         ArgumentCaptor<Transaction> captor = ArgumentCaptor.forClass(Transaction.class);
         verify(transactionRepository, times(1)).save(captor.capture());
@@ -89,6 +90,39 @@ class TransactionServiceTest {
 
         // Assert: phải gọi delete với object đã lấy ra
         verify(transactionRepository).delete(stored);
+    }
+
+    @Test
+    void updateTransactionReassignsUserWhenDifferentId() {
+        // Arrange: transaction hiện tại thuộc user A
+        User currentUser = new User();
+        currentUser.setId(1L);
+        Transaction stored = new Transaction();
+        stored.setId(15L);
+        stored.setUser(currentUser);
+        // User mới chuẩn bị trước
+        User newUser = new User();
+        newUser.setId(2L);
+
+        when(transactionRepository.findById(15L)).thenReturn(Optional.of(stored));
+        when(userRepository.findById(2L)).thenReturn(Optional.of(newUser));
+        when(transactionRepository.save(stored)).thenReturn(stored);
+
+        // Request gửi userId mới và chỉ đổi type
+        TransactionRequest request = new TransactionRequest(
+                2L,
+                TransactionType.EXPENSE,
+                null,
+                null,
+                null,
+                null
+        );
+        // Act: cập nhật user
+        Transaction updated = transactionService.updateTransaction(15L, request);
+        // Assert: user phải là user mới, các trường khác không bị ép null
+        assertThat(updated.getUser()).isSameAs(newUser);
+        verify(userRepository).findById(2L);
+        verify(transactionRepository).save(stored);
     }
 
     @Test
