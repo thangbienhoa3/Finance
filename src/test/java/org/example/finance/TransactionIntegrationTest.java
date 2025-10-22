@@ -32,13 +32,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class TransactionIntegrationTest {
 
     @Autowired
-    private TransactionService transactionService;
-
-    @Autowired
     private TransactionRepository transactionRepository;
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private TransactionService transactionService;
 
     @BeforeEach
     void setUp() {
@@ -56,8 +55,9 @@ class TransactionIntegrationTest {
     @DisplayName("TransactionService should remain consistent under high concurrency")
     void createTransactionShouldBeThreadSafe() throws InterruptedException {
         int userCount = 8;
-        int transactionsPerUser = 25;
+        int transactionsPerUser = 50;
         int totalTransactions = userCount * transactionsPerUser;
+        LocalDate transactionDate = LocalDate.now();
 
         List<User> users = IntStream.range(0, userCount)
                 .mapToObj(i -> {
@@ -67,56 +67,70 @@ class TransactionIntegrationTest {
                     user.setPassword("password");
                     return userRepository.save(user);
                 })
+                .collect(Collectors.toList());
+
+        List<TransactionJob> jobs = users.stream()
+                .flatMap(user -> IntStream.range(0, transactionsPerUser)
+                        .mapToObj(attempt -> new TransactionJob(user, attempt)))
                 .toList();
 
-        ExecutorService executor = Executors.newFixedThreadPool(Math.min(32, totalTransactions));
+        ExecutorService executor = Executors.newFixedThreadPool(totalTransactions);
         CountDownLatch readyLatch = new CountDownLatch(totalTransactions);
         CountDownLatch startLatch = new CountDownLatch(1);
         CountDownLatch doneLatch = new CountDownLatch(totalTransactions);
         AtomicInteger failureCount = new AtomicInteger();
 
-        for (User user : users) {
-            for (int txIndex = 0; txIndex < transactionsPerUser; txIndex++) {
-                final int attempt = txIndex;
-                executor.submit(() -> {
-                    readyLatch.countDown();
-                    try {
-                        startLatch.await();
-                        TransactionRequest request = new TransactionRequest(
-                                user.getId(),
-                                TransactionType.INCOME,
-                                BigDecimal.valueOf(attempt + 1),
-                                "Salary",
-                                "batch-" + user.getUsername() + '-' + attempt,
-                                LocalDate.now()
-                        );
-                        transactionService.createTransaction(request);
-                    } catch (Exception e) {
-                        failureCount.incrementAndGet();
-                    } finally {
-                        doneLatch.countDown();
-                    }
-                });
-            }
+        try {
+            jobs.forEach(job -> executor.submit(() -> {
+                readyLatch.countDown();
+                try {
+                    startLatch.await();
+                    TransactionRequest request = new TransactionRequest(
+                            job.user().getId(),
+                            TransactionType.INCOME,
+                            BigDecimal.valueOf(job.sequence() + 1),
+                            "Salary",
+                            "batch-" + job.user().getUsername() + '-' + job.sequence(),
+                            transactionDate
+                    );
+                    transactionService.createTransaction(request);
+                } catch (Exception e) {
+                    failureCount.incrementAndGet();
+                } finally {
+                    doneLatch.countDown();
+                }
+            }));
+
+            assertTrue(readyLatch.await(30, TimeUnit.SECONDS), "All tasks should be ready before starting");
+            startLatch.countDown();
+            boolean finished = doneLatch.await(60, TimeUnit.SECONDS);
+
+            assertTrue(finished, "Not all tasks completed in time");
+            assertThat(failureCount.get()).isZero();
+        } finally {
+            executor.shutdownNow();
+            assertTrue(executor.awaitTermination(60, TimeUnit.SECONDS), "Executor did not terminate in time");
         }
-
-        assertTrue(readyLatch.await(30, TimeUnit.SECONDS), "All tasks should be ready before starting");
-        startLatch.countDown();
-        boolean finished = doneLatch.await(60, TimeUnit.SECONDS);
-
-        executor.shutdown();
-        assertTrue(executor.awaitTermination(60, TimeUnit.SECONDS), "Executor did not terminate in time");
-        assertTrue(finished, "Not all tasks completed in time");
-        assertThat(failureCount.get()).isZero();
 
         List<Transaction> savedTransactions = transactionRepository.findAll();
         assertThat(savedTransactions).hasSize(totalTransactions);
+        assertThat(savedTransactions)
+                .allSatisfy(transaction -> {
+                    assertThat(transaction.getType()).isEqualTo(TransactionType.INCOME);
+                    assertThat(transaction.getCategory()).isEqualTo("Salary");
+                    assertThat(transaction.getTransactionDate()).isEqualTo(transactionDate);
+                });
 
         Map<Long, Long> transactionsPerUserResult = savedTransactions.stream()
                 .collect(Collectors.groupingBy(transaction -> transaction.getUser().getId(), Collectors.counting()));
+        Map<Long, Long> expectedCounts = jobs.stream()
+                .collect(Collectors.groupingBy(job -> job.user().getId(), Collectors.counting()));
 
-        users.forEach(user -> assertThat(transactionsPerUserResult.get(user.getId()))
-                .as("User %s should have %s transactions", user.getId(), transactionsPerUser)
-                .isEqualTo((long) transactionsPerUser));
+        assertThat(transactionsPerUserResult)
+                .as("Every user should have the expected number of transactions")
+                .containsExactlyInAnyOrderEntriesOf(expectedCounts);
+    }
+
+    private record TransactionJob(User user, int sequence) {
     }
 }
