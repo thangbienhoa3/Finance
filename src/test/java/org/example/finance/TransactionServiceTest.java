@@ -9,12 +9,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -73,5 +75,31 @@ class TransactionServiceTest {
         assertThat(created.getCategory()).isEqualTo("Food");
         assertThat(created.getDescription()).isEqualTo("Lunch");
         assertThat(created.getType()).isEqualTo(TransactionType.EXPENSE);
+    }
+
+    @Test
+    void deleteTransactionRemovesEntityAfterLookup() {
+        // Arrange: tìm thấy transaction trong repo
+        Transaction stored = new Transaction();
+        stored.setId(200L);
+        when(transactionRepository.findById(200L)).thenReturn(Optional.of(stored));
+
+        // Act: xóa
+        transactionService.deleteTransaction(200L);
+
+        // Assert: phải gọi delete với object đã lấy ra
+        verify(transactionRepository).delete(stored);
+    }
+
+    @Test
+    void getTransactionOrThrowThrowsWhenMissing() {
+        // Arrange: repository trả về empty
+        when(transactionRepository.findById(404L)).thenReturn(Optional.empty());
+
+        // Act + Assert: kỳ vọng lỗi 404
+        assertThatThrownBy(() -> transactionService.getTransactionOrThrow(404L))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("404")
+                .hasMessageContaining("Transaction not found");
     }
 }
