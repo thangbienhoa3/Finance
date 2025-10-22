@@ -65,7 +65,7 @@ public class Transaction {
     public void setUser(User user) {this.user = user;}
     public TransactionType getType() {return type;}
     public void setType(TransactionType type) {this.type = type;}
-    public BigDecimal getAmount() {return amount;}
+    public BigDecimal getAmount() {return this.amount;}
     public void setAmount(BigDecimal amount) {this.amount = amount;}
     public String getCategory() {return category;}
     public void setCategory(String category) {this.category = category;}

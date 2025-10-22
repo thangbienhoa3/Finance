@@ -24,18 +24,15 @@ public class TransactionService {
     }
 
     public Transaction createTransaction(TransactionRequest request) {
-       User user = userRepository.findById(request.userId()).orElseThrow(() ->
-               new IllegalArgumentException("User not found with id: " + request.userId()));
-
-       Transaction transaction = new Transaction();
-
-       transaction.setUser(user);
-       transaction.setAmount(request.amount());
-       transaction.setDescription(request.description());
-       transaction.setCategory(request.category());
-       transaction.setTransactionDate(request.transactionDate());
-
-       return transactionRepository.save(transaction);
+        User user = getUserOrThrow(request.userId());
+        Transaction transaction = new Transaction();
+        transaction.setUser(user);
+        transaction.setType(request.type());
+        transaction.setAmount(request.amount());
+        transaction.setCategory(request.category());
+        transaction.setDescription(request.description());
+        transaction.setTransactionDate(defaultDate(request.transactionDate()));
+        return transactionRepository.save(transaction);
     }
 
     public Transaction updateTransaction(Long id, TransactionRequest request) {
