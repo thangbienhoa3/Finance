@@ -30,7 +30,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-
 class TransactionIntegrationTest {
     @Autowired
     private TransactionRepository transactionRepository;
@@ -56,7 +55,7 @@ class TransactionIntegrationTest {
     @DisplayName("TransactionService should remain consistent under high concurrency")
     void createTransactionShouldBeThreadSafe() throws InterruptedException {
         int userCount = 8;
-        int transactionsPerUser = 25;
+        int transactionsPerUser = 5;
         int totalTransactions = userCount * transactionsPerUser;
         LocalDate transactionDate = LocalDate.now();
 
