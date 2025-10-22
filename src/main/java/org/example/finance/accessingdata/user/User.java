@@ -3,7 +3,7 @@ package org.example.finance.accessingdata.user;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue
