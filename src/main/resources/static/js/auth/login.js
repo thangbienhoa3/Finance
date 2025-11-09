@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (ok) {
                 console.log("login.js loaded!");
                 saveUser(username);
-                setTimeout(() => (window.location.href = "hello.html"), 1000);
+                setTimeout(() => (window.location.href = "home.html"), 1000);
             }
         } catch (error) {
             msg.textContent = "Lỗi kết nối server!";

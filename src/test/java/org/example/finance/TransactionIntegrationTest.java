@@ -54,7 +54,7 @@ class TransactionIntegrationTest {
     @Test
     @DisplayName("TransactionService should remain consistent under high concurrency")
     void createTransactionShouldBeThreadSafe() throws InterruptedException {
-        int userCount = 8;
+        int userCount = 1000;
         int transactionsPerUser = 5;
         int totalTransactions = userCount * transactionsPerUser;
         LocalDate transactionDate = LocalDate.now();

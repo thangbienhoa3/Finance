@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bảng điều khiển tài chính | Dooto Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+<div class="app-shell">
+    <header class="app-header">
+        <a class="app-header__brand" href="home.html">
+            <span>₿</span>
+            <div>
+                <strong>Dooto Finance</strong><br>
+                <small>Quản lí tài chính thông minh</small>
+            </div>
+        </a>
+        <nav class="app-header__nav">
+            <a href="#overview">Tổng quan</a>
+            <a href="#charts">Biểu đồ</a>
+            <a href="#goals">Mục tiêu</a>
+        </nav>
+        <div class="app-header__actions">
+            <button class="quick-action">+ Giao dịch mới</button>
+            <details class="user-menu">
+                <summary>
+                    <span class="user-menu__avatar">NT</span>
+                </summary>
+                <div class="user-menu__panel">
+                    <div>
+                        <div class="user-menu__name">Nguyễn Thuý</div>
+                        <div class="user-menu__email">nguyenthuy@dooto.finance</div>
+                    </div>
+                    <a class="user-menu__link" href="profile.html">Trang cá nhân</a>
+                    <a class="user-menu__link" href="dashboard.html">Bảng thông tin</a>
+                    <a class="user-menu__link" href="login.html">Đăng xuất</a>
+                </div>
+            </details>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <section class="overview-grid" id="overview">
+            <article class="overview-card">
+                <span>Số dư ví tổng</span>
+                <div class="overview-value">98.450.000đ <span class="overview-chip">+12,4%</span></div>
+                <span>Cập nhật 15 phút trước</span>
+            </article>
+            <article class="overview-card">
+                <span>Chi tiêu tháng này</span>
+                <div class="overview-value">21.860.000đ <span class="overview-chip">-8,1%</span></div>
+                <span>So với cùng kỳ tháng trước</span>
+            </article>
+            <article class="overview-card">
+                <span>Doanh thu thụ động</span>
+                <div class="overview-value">12.300.000đ <span class="overview-chip">+4,5%</span></div>
+                <span>Từ lãi tiết kiệm &amp; cổ tức</span>
+            </article>
+            <article class="overview-card">
+                <span>Tỷ lệ tiết kiệm</span>
+                <div class="overview-value">34% <span class="overview-chip">+3%</span></div>
+                <span>Trên tổng thu nhập tháng</span>
+            </article>
+        </section>
+
+        <section class="insights-layout" id="charts">
+            <div class="dashboard-grid">
+                <article class="chart-card">
+                    <header>
+                        <h2 class="chart-title">Xu hướng giao dịch</h2>
+                        <span class="chart-filter">6 tháng gần nhất</span>
+                    </header>
+                    <div class="chart-illustration">
+                        <div class="sparkline">
+                            <svg viewBox="0 0 400 180" preserveAspectRatio="none">
+                                <polyline fill="none" stroke="#6366f1" stroke-width="6" stroke-linecap="round"
+                                          points="0,140 60,120 110,150 160,80 210,100 260,60 320,90 380,40" />
+                                <polyline fill="rgba(129, 140, 248, 0.25)" stroke="rgba(129, 140, 248, 0.3)" stroke-width="0"
+                                          points="0,140 60,120 110,150 160,80 210,100 260,60 320,90 380,40 380,180 0,180" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <strong>Tổng giao dịch</strong>
+                            <span>+ 1.250 giao dịch</span>
+                        </div>
+                        <div class="activity-item">
+                            <strong>Chi tiêu trung bình</strong>
+                            <span>3.100.000đ / tuần</span>
+                        </div>
+                        <div class="activity-item">
+                            <strong>Tỷ lệ hoàn tiền</strong>
+                            <span>9,3%</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="chart-card">
+                    <header>
+                        <h2 class="chart-title">Chi tiêu theo danh mục</h2>
+                        <span class="chart-filter">Tháng 09</span>
+                    </header>
+                    <div class="chart-illustration">
+                        <svg viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="70" fill="rgba(203, 213, 225, 0.35)" />
+                            <path d="M100 30 A70 70 0 0 1 178 124 L100 100Z" fill="#f97316" />
+                            <path d="M178 124 A70 70 0 0 1 52 168 L100 100Z" fill="#6366f1" />
+                            <path d="M52 168 A70 70 0 0 1 100 30 L100 100Z" fill="#22d3ee" />
+                        </svg>
+                    </div>
+                    <div class="progress-list">
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <strong>Gia đình &amp; sinh hoạt</strong>
+                                <span>42%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-value" style="width: 42%"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <strong>Đầu tư &amp; tích luỹ</strong>
+                                <span>33%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-value" style="width: 33%"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <strong>Phong cách sống</strong>
+                                <span>25%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-value" style="width: 25%"></div></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="activity-card">
+                    <header>
+                        <h2 class="chart-title">Nhắc nhở hôm nay</h2>
+                        <span class="chart-filter">04 nhiệm vụ</span>
+                    </header>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <span>Thanh toán hoá đơn điện nước</span>
+                            <span class="activity-amount">- 1.250.000đ</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Chuyển 5% lương vào quỹ tiết kiệm</span>
+                            <span class="activity-amount">+ 2.150.000đ</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Tái cân bằng danh mục đầu tư</span>
+                            <span class="activity-amount">Đang chờ</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Gia hạn bảo hiểm sức khoẻ</span>
+                            <span class="activity-amount">- 860.000đ</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <aside class="side-panel" id="goals">
+                <article class="goal-card">
+                    <div>
+                        <span>Mục tiêu chính</span>
+                        <strong>Quỹ mua nhà</strong>
+                    </div>
+                    <p>Đã tích luỹ được 420.000.000đ trong mục tiêu 600.000.000đ.</p>
+                    <div class="progress-bar"><div class="progress-value" style="width: 70%"></div></div>
+                    <div class="progress-label">
+                        <span>Tiến độ</span>
+                        <strong>70%</strong>
+                    </div>
+                </article>
+
+                <article class="budget-card">
+                    <header>
+                        <h2 class="chart-title">Ngân sách nhanh</h2>
+                    </header>
+                    <div class="budget-list">
+                        <div class="budget-item">
+                            <strong>Ăn uống &amp; siêu thị</strong>
+                            <span>5.200.000đ / 7.000.000đ</span>
+                        </div>
+                        <div class="budget-item">
+                            <strong>Di chuyển</strong>
+                            <span>1.150.000đ / 2.500.000đ</span>
+                        </div>
+                        <div class="budget-item">
+                            <strong>Giải trí</strong>
+                            <span>1.860.000đ / 3.000.000đ</span>
+                        </div>
+                        <div class="budget-item">
+                            <strong>Giáo dục</strong>
+                            <span>3.500.000đ / 5.500.000đ</span>
+                        </div>
+                    </div>
+                </article>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        © 2024 Dooto Finance. Đồng hành cùng bạn trên hành trình tự do tài chính.
+    </footer>
+</div>
+</body>
+</html>

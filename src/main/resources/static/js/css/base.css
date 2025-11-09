@@ -6,13 +6,16 @@
     --primary-dark: #1e3a8a;
     --accent: #f97316;
     --text: #0f172a;
+    --text-primary: #0f172a;
     --text-muted: #64748b;
     --border-soft: rgba(148, 163, 184, 0.18);
     --shadow-soft: rgba(15, 23, 42, 0.08);
     --shadow-strong: rgba(15, 23, 42, 0.18);
+    --radius-xl: 36px;
     --radius-lg: 28px;
     --radius-md: 20px;
     --radius-sm: 12px;
+    --radius-pill: 999px;
     font-size: 16px;
 }
 
