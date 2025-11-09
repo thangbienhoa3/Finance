@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang cá nhân | Dooto Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+<div class="app-shell">
+    <header class="app-header">
+        <a class="app-header__brand" href="home.html">
+            <span>₿</span>
+            <div>
+                <strong>Dooto Finance</strong><br>
+                <small>Quản lý tài chính thông minh</small>
+            </div>
+        </a>
+        <nav class="app-header__nav">
+            <a href="home.html">Trang chủ</a>
+            <a href="dashboard.html">Bảng điều khiển</a>
+            <a href="profile.html" class="is-active">Trang cá nhân</a>
+        </nav>
+        <div class="app-header__actions">
+            <button class="quick-action">Báo cáo gần nhất</button>
+            <details class="user-menu" open>
+                <summary>
+                    <span class="user-menu__avatar" id="profileMenuAvatar">NT</span>
+                </summary>
+                <div class="user-menu__panel">
+                    <div>
+                        <div class="user-menu__name" id="profileMenuName">Nguyễn Thuý</div>
+                        <div class="user-menu__email" id="profileMenuEmail">nguyenthuy@dooto.finance</div>
+                    </div>
+                    <a class="user-menu__link" href="profile.html">Trang cá nhân</a>
+                    <a class="user-menu__link" href="dashboard.html">Bảng điều khiển</a>
+                    <a class="user-menu__link" href="login.html">Đăng xuất</a>
+                </div>
+            </details>
+        </div>
+    </header>
+
+    <main class="profile-page">
+        <section class="profile-overview">
+            <div class="profile-avatar" id="profileAvatar">NT</div>
+            <div>
+                <h1 class="profile-name" id="profileName">Nguyễn Thuý</h1>
+                <p class="profile-role" id="profileRole">Chuyên gia phân tích tài chính cấp cao tại Dooto Finance</p>
+                <ul class="profile-meta">
+                    <li>
+                        <span class="profile-meta__label">Trạng thái</span>
+                        <span class="profile-meta__value" id="profileStatus">Đang hoạt động</span>
+                    </li>
+                    <li>
+                        <span class="profile-meta__label">Ngày tham gia</span>
+                        <span class="profile-meta__value" id="profileJoinDate">12/03/2021</span>
+                    </li>
+                    <li>
+                        <span class="profile-meta__label">Kế hoạch</span>
+                        <span class="profile-meta__value" id="profilePlan">Doanh nghiệp Premium</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="profile-details">
+            <article class="profile-card">
+                <h2>Thông tin liên hệ</h2>
+                <dl class="profile-info">
+                    <div>
+                        <dt>Email</dt>
+                        <dd id="profileEmail">nguyenthuy@dooto.finance</dd>
+                    </div>
+                    <div>
+                        <dt>Số điện thoại</dt>
+                        <dd id="profilePhone">+84 912 345 678</dd>
+                    </div>
+                    <div>
+                        <dt>Địa chỉ</dt>
+                        <dd id="profileAddress">Tầng 12, Toà nhà Dooto, Quận 1, TP.HCM</dd>
+                    </div>
+                    <div>
+                        <dt>Sinh nhật</dt>
+                        <dd id="profileBirthday">22/07/1990</dd>
+                    </div>
+                </dl>
+            </article>
+
+            <article class="profile-card">
+                <h2>Mục tiêu tài chính</h2>
+                <p id="profileGoals">Tăng trưởng danh mục đầu tư 12% mỗi năm, tối ưu chi phí cố định và chuẩn bị quỹ giáo dục cho con trong 5 năm tới.</p>
+                <h3 class="profile-subtitle">Ưu tiên hiện tại</h3>
+                <ul class="profile-priorities" id="profilePriorities">
+                    <li>Phân bổ lại danh mục ETF</li>
+                    <li>Gia tăng quỹ khẩn cấp lên 200 triệu</li>
+                    <li>Tối ưu chi phí vận hành gia đình</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="profile-form-section">
+            <div class="profile-card">
+                <h2>Cập nhật thông tin cá nhân</h2>
+                <p class="profile-form__description">Điều chỉnh thông tin của bạn để chúng tôi đề xuất các giải pháp tài chính chính xác hơn.</p>
+                <form id="profileForm" class="profile-form">
+                    <div class="profile-form__grid">
+                        <label>
+                            <span>Họ và tên</span>
+                            <input type="text" name="fullName" id="inputFullName" required />
+                        </label>
+                        <label>
+                            <span>Chức danh</span>
+                            <input type="text" name="role" id="inputRole" />
+                        </label>
+                        <label>
+                            <span>Email</span>
+                            <input type="email" name="email" id="inputEmail" required />
+                        </label>
+                        <label>
+                            <span>Số điện thoại</span>
+                            <input type="tel" name="phone" id="inputPhone" />
+                        </label>
+                        <label>
+                            <span>Địa chỉ</span>
+                            <input type="text" name="address" id="inputAddress" />
+                        </label>
+                        <label>
+                            <span>Sinh nhật</span>
+                            <input type="date" name="birthday" id="inputBirthday" />
+                        </label>
+                        <label class="profile-form__full">
+                            <span>Mục tiêu tài chính</span>
+                            <textarea name="goals" id="inputGoals" rows="3"></textarea>
+                        </label>
+                        <label class="profile-form__full">
+                            <span>Ưu tiên hiện tại (mỗi dòng một mục)</span>
+                            <textarea name="priorities" id="inputPriorities" rows="3"></textarea>
+                        </label>
+                    </div>
+                    <button type="submit" class="primary-btn profile-form__submit">Lưu thay đổi</button>
+                    <p class="profile-form__status" id="profileFormStatus" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        © 2024 Dooto Finance. Dữ liệu của bạn luôn được bảo mật.
+    </footer>
+</div>
+<script type="module" src="js/pages/profilePage.js"></script>
+</body>
+</html>
