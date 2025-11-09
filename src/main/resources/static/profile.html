@@ -144,7 +144,28 @@
             </div>
         </section>
     </main>
-
+    <div class="profile-card">
+        <h2>Đổi mật khẩu</h2>
+        <p class="profile-form__description">Tăng cường bảo mật tài khoản của bạn bằng cách thường xuyên cập nhật mật khẩu.</p>
+        <form id="passwordForm" class="profile-form">
+            <div class="profile-form__grid">
+                <label class="profile-form__full">
+                    <span>Mật khẩu hiện tại</span>
+                    <input type="password" name="currentPassword" id="currentPassword" required autocomplete="current-password" />
+                </label>
+                <label class="profile-form__full">
+                    <span>Mật khẩu mới</span>
+                    <input type="password" name="newPassword" id="newPassword" required minlength="6" autocomplete="new-password" />
+                </label>
+                <label class="profile-form__full">
+                    <span>Xác nhận mật khẩu mới</span>
+                    <input type="password" name="confirmNewPassword" id="confirmNewPassword" required minlength="6" autocomplete="new-password" />
+                </label>
+            </div>
+            <button type="submit" class="primary-btn profile-form__submit">Đổi mật khẩu</button>
+            <p class="profile-form__status" id="passwordFormStatus" role="status" aria-live="polite"></p>
+        </form>
+    </div>
     <footer class="app-footer">
         © 2024 Dooto Finance. Dữ liệu của bạn luôn được bảo mật.
     </footer>

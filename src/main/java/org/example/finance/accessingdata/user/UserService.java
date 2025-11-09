@@ -41,7 +41,7 @@ public class UserService {
 
     public User updateUser(Long userId, UpdateUserRequest request) {
         User user = getUserOrThrow(userId);
-
+        System.out.println(request.getPhone() + " " + request.getAddress() + " " + request.getRole());
         if (request == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Request body is required");
         }
@@ -70,6 +70,21 @@ public class UserService {
 
         if (StringUtils.hasText(request.getName()) && !Objects.equals(user.getName(), request.getName())) {
             user.setName(request.getName());
+            updated = true;
+        }
+
+        if (StringUtils.hasText(request.getPhone()) && !Objects.equals(user.getPhone(), request.getPhone())) {
+            user.setPhone(request.getPhone());
+            updated = true;
+        }
+
+        if (StringUtils.hasText(request.getAddress()) && !Objects.equals(user.getAddress(), request.getAddress())) {
+            user.setAddress(request.getAddress());
+            updated = true;
+        }
+
+        if (StringUtils.hasText(request.getRole()) && !Objects.equals(user.getRole(), request.getRole())) {
+            user.setRole(request.getRole());
             updated = true;
         }
 

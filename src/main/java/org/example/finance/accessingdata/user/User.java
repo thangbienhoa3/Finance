@@ -14,7 +14,9 @@ public class User {
     private String username;
     private String password;
     private String email;
-
+    private String phone;
+    private String address;
+    private String role;
     public User() {
     }
     public User(String username, String email, String password) {
@@ -32,5 +34,11 @@ public class User {
     public void setUsername(String username) {this.username = username;}
     public String getPassword() {return this.password;}
     public void setPassword(String password) {this.password = password;}
+    public String getPhone() {return this.phone;}
+    public void setPhone(String phone) {this.phone = phone;}
+    public String getAddress() {return this.address;}
+    public void setAddress(String address) {this.address = address;}
+    public String getRole() {return this.role;}
+    public void setRole(String role) {this.role = role;}
 }
 
