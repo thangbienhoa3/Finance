@@ -4,7 +4,10 @@ import org.example.finance.accessingdata.auth.Login;
 import org.example.finance.accessingdata.auth.Register;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -36,4 +39,71 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User updateUser(Long userId, UpdateUserRequest request) {
+        User user = getUserOrThrow(userId);
+
+        if (request == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Request body is required");
+        }
+
+        boolean updated = false;
+
+        if (StringUtils.hasText(request.getUsername()) && !Objects.equals(user.getUsername(), request.getUsername())) {
+            userRepository.findByUsername(request.getUsername())
+                    .filter(existing -> !Objects.equals(existing.getId(), userId))
+                    .ifPresent(existing -> {
+                        throw new ResponseStatusException(HttpStatus.CONFLICT, "Username already in use");
+                    });
+            user.setUsername(request.getUsername());
+            updated = true;
+        }
+
+        if (StringUtils.hasText(request.getEmail()) && !Objects.equals(user.getEmail(), request.getEmail())) {
+            userRepository.findByEmail(request.getEmail())
+                    .filter(existing -> !Objects.equals(existing.getId(), userId))
+                    .ifPresent(existing -> {
+                        throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already in use");
+                    });
+            user.setEmail(request.getEmail());
+            updated = true;
+        }
+
+        if (StringUtils.hasText(request.getName()) && !Objects.equals(user.getName(), request.getName())) {
+            user.setName(request.getName());
+            updated = true;
+        }
+
+        if (!updated) {
+            return user;
+        }
+
+        return userRepository.save(user);
+    }
+
+    public void changePassword(Long userId, ChangePasswordRequest request) {
+        if (request == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Request body is required");
+        }
+
+        if (!StringUtils.hasText(request.getOldPassword())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Old password is required");
+        }
+
+        if (!StringUtils.hasText(request.getNewPassword())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "New password is required");
+        }
+
+        if (!request.getNewPassword().equals(request.getConfirmPassword())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password confirmation does not match");
+        }
+
+        User user = getUserOrThrow(userId);
+
+        if (!user.getPassword().equals(request.getOldPassword())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Old password is incorrect");
+        }
+
+        user.setPassword(request.getNewPassword());
+        userRepository.save(user);
+    }
 }

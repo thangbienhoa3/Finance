@@ -20,6 +20,16 @@ public class UserController {
     public String login(@RequestParam String username, @RequestParam String password) {
         return  service.login(username, password);
     }
+    @PutMapping("/{userId}")
+    public User updateUser(@PathVariable Long userId, @RequestBody UpdateUserRequest request) {
+        return service.updateUser(userId, request);
+    }
+
+    @PostMapping("/{userId}/change-password")
+    public String changePassword(@PathVariable Long userId, @RequestBody ChangePasswordRequest request) {
+        service.changePassword(userId, request);
+        return "Password updated successfully!";
+    }
     @GetMapping
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
