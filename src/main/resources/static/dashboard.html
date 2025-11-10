@@ -3,124 +3,540 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Giao dịch</title>
+    <title>Quản lý giao dịch</title>
     <style>
+        :root {
+            color-scheme: light;
+            font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 2rem;
+            margin: 0;
+            background: #f1f5f9;
+            color: #0f172a;
         }
 
-        h1 {
-            margin-bottom: 1rem;
+        h1,
+        h2,
+        h3 {
+            line-height: 1.25;
+            margin: 0;
         }
 
-        #statusMessage[hidden] {
-            display: none;
+        h2 {
+            font-size: 1.2rem;
         }
 
-        #statusMessage {
-            margin-bottom: 1rem;
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid #ccc;
-            padding: 0.5rem;
-            text-align: left;
-        }
-
-        .actions button {
-            margin-right: 0.5rem;
-        }
-
-        dialog form {
+        .page__header {
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
-            min-width: 260px;
         }
 
-        dialog label {
+        .page__title {
+            font-size: clamp(1.75rem, 3vw, 2.35rem);
+            font-weight: 700;
+        }
+
+        .page__subtitle {
+            margin: 0;
+            color: #475569;
+            max-width: 720px;
+            line-height: 1.6;
+        }
+
+        .transaction-message {
+            margin: 0;
+            padding: 0.85rem 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid transparent;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .transaction-message[hidden] {
+            display: none;
+        }
+
+        .transaction-message--info {
+            background: #e0f2fe;
+            border-color: #bae6fd;
+            color: #075985;
+        }
+
+        .transaction-message--success {
+            background: #dcfce7;
+            border-color: #bbf7d0;
+            color: #047857;
+        }
+
+        .transaction-message--error {
+            background: #fee2e2;
+            border-color: #fecaca;
+            color: #b91c1c;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 40px -20px rgba(15, 23, 42, 0.35);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .card--narrow {
+            max-width: 420px;
+        }
+
+        .section-heading {
             display: flex;
             flex-direction: column;
             gap: 0.25rem;
         }
 
+        .section-heading__title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .section-heading__subtitle {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .transaction-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem 1.5rem;
+        }
+
+        .transaction-form__field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .transaction-form label {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .transaction-form input,
+        .transaction-form select,
+        .transaction-form textarea {
+            font: inherit;
+            padding: 0.55rem 0.75rem;
+            border: 1px solid #cbd5f5;
+            border-radius: 0.65rem;
+            background: #f8fafc;
+            color: #0f172a;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .transaction-form input:focus,
+        .transaction-form select:focus,
+        .transaction-form textarea:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+            background: #ffffff;
+        }
+
+        .transaction-form textarea {
+            min-height: 4rem;
+            resize: vertical;
+        }
+
+        .form-actions,
+        .transaction-form menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        button,
+        .button {
+            font: inherit;
+            border-radius: 999px;
+            padding: 0.55rem 1.25rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .button--primary {
+            background: linear-gradient(135deg, #0284c7, #0ea5e9);
+            color: #fff;
+            box-shadow: 0 12px 30px -15px rgba(14, 165, 233, 0.8);
+        }
+
+        .button--primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 40px -18px rgba(14, 165, 233, 0.8);
+        }
+
+        .button--ghost {
+            background: #fff;
+            border-color: #cbd5f5;
+            color: #0f172a;
+        }
+
+        .button--ghost:hover {
+            border-color: #94a3b8;
+            background: #f8fafc;
+        }
+
+        .button--danger {
+            background: #f87171;
+            border-color: #ef4444;
+            color: #fff;
+        }
+
+        .button--danger:hover {
+            background: #ef4444;
+        }
+
+        .transaction-create__status {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .transaction-create__status[hidden] {
+            display: none;
+        }
+
+        .transaction-create__status--info {
+            color: #0369a1;
+        }
+
+        .transaction-create__status--success {
+            color: #047857;
+        }
+
+        .transaction-create__status--error {
+            color: #b91c1c;
+        }
+
+        .transaction-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .transaction-filters__field {
+            flex: 1 1 180px;
+        }
+
+        .transaction-filters input,
+        .transaction-filters select {
+            width: 100%;
+        }
+
+        .transaction-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .transaction-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 720px;
+        }
+
+        .transaction-table th,
+        .transaction-table td {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.85rem 1rem;
+            text-align: left;
+        }
+
+        .transaction-table thead {
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .transaction-table tbody tr:hover {
+            background: rgba(14, 165, 233, 0.06);
+        }
+
+        .transaction-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 600;
+        }
+
+        .action-btn--edit {
+            background: #fef3c7;
+            border-color: #facc15;
+            color: #92400e;
+        }
+
+        .action-btn--delete {
+            background: #fee2e2;
+            border-color: #fca5a5;
+            color: #b91c1c;
+        }
+
+        .amount-positive {
+            color: #047857;
+            font-weight: 600;
+        }
+
+        .amount-negative {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .transaction-empty {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .tag--income {
+            background: #bbf7d0;
+            color: #166534;
+        }
+
+        .tag--expense {
+            background: #fecdd3;
+            color: #9f1239;
+        }
+
+        dialog {
+            border: none;
+            border-radius: 1rem;
+            padding: 0;
+            max-width: 480px;
+            width: min(95vw, 480px);
+            box-shadow: 0 40px 80px -40px rgba(15, 23, 42, 0.45);
+        }
+
+        dialog form {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
         dialog menu {
             display: flex;
             justify-content: flex-end;
-            gap: 0.5rem;
-            padding: 0;
+            gap: 0.75rem;
+        }
+
+        dialog::backdrop {
+            background: rgba(15, 23, 42, 0.35);
+        }
+
+        @media (max-width: 768px) {
+            .transaction-table {
+                min-width: 100%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
-<h1>Danh sách giao dịch</h1>
+<main class="page">
+    <header class="page__header">
+        <h1 class="page__title">Quản lý giao dịch</h1>
+        <p class="page__subtitle">Thêm, lọc và cập nhật giao dịch của bạn trong một bảng điều khiển trực quan và dễ sử dụng.</p>
+        <p id="statusMessage" class="transaction-message" data-role="transaction-message" hidden></p>
+    </header>
 
-<p id="statusMessage" hidden></p>
-<div class="filters">
-    <input id="transactionSearch" placeholder="Tìm theo mô tả..." />
+    <section class="cards">
+        <section class="card card--narrow">
+            <div class="section-heading">
+                <h2 class="section-heading__title">Thêm giao dịch mới</h2>
+                <p class="section-heading__subtitle">Điền thông tin chi tiết bên dưới để ghi nhận giao dịch của bạn.</p>
+            </div>
+            <form id="transactionCreateForm" class="transaction-form">
+                <div class="transaction-form__field">
+                    <label for="transactionCreateDescription">Mô tả</label>
+                    <input id="transactionCreateDescription" type="text" name="description" placeholder="Ví dụ: Lương tháng 5" required />
+                </div>
+                <div class="transaction-form__field">
+                    <label for="transactionCreateCategory">Danh mục</label>
+                    <input id="transactionCreateCategory" type="text" name="category" placeholder="Ví dụ: Thu nhập" />
+                </div>
+                <div class="transaction-form__field">
+                    <label for="transactionCreateType">Loại giao dịch</label>
+                    <select id="transactionCreateType" name="type">
+                        <option value="INCOME">Thu nhập</option>
+                        <option value="EXPENSE">Chi tiêu</option>
+                    </select>
+                </div>
+                <div class="transaction-form__field">
+                    <label for="transactionCreateAmount">Số tiền</label>
+                    <input id="transactionCreateAmount" type="number" name="amount" min="0" step="0.01" placeholder="0" required />
+                </div>
+                <div class="transaction-form__field">
+                    <label for="transactionCreateDate">Ngày giao dịch</label>
+                    <input id="transactionCreateDate" type="date" name="transactionDate" />
+                </div>
+                <div class="transaction-form__field" style="grid-column: 1 / -1;">
+                    <div class="form-actions">
+                        <button class="button button--ghost" type="reset">Làm mới</button>
+                        <button class="button button--primary" type="submit">Thêm giao dịch</button>
+                    </div>
+                </div>
+            </form>
+            <p class="transaction-create__status" data-role="transaction-create-status" hidden></p>
+        </section>
 
-    <select id="transactionTypeFilter">
-        <option value="">Tất cả loại</option>
-        <option value="INCOME">Thu nhập</option>
-        <option value="EXPENSE">Chi tiêu</option>
-    </select>
+        <section class="card">
+            <div class="section-heading">
+                <h2 class="section-heading__title">Bộ lọc giao dịch</h2>
+                <p class="section-heading__subtitle">Sử dụng bộ lọc để nhanh chóng tìm giao dịch theo nội dung, danh mục hoặc thời gian.</p>
+            </div>
+            <div class="transaction-filters">
+                <div class="transaction-filters__field">
+                    <label class="transaction-form__field">
+                        <span>Tìm kiếm</span>
+                        <input id="transactionSearch" placeholder="Nhập từ khoá mô tả..." />
+                    </label>
+                </div>
+                <div class="transaction-filters__field">
+                    <label class="transaction-form__field">
+                        <span>Loại giao dịch</span>
+                        <select id="transactionTypeFilter">
+                            <option value="">Tất cả loại</option>
+                            <option value="INCOME">Thu nhập</option>
+                            <option value="EXPENSE">Chi tiêu</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="transaction-filters__field">
+                    <label class="transaction-form__field">
+                        <span>Từ ngày</span>
+                        <input type="date" id="transactionDateFrom" />
+                    </label>
+                </div>
+                <div class="transaction-filters__field">
+                    <label class="transaction-form__field">
+                        <span>Đến ngày</span>
+                        <input type="date" id="transactionDateTo" />
+                    </label>
+                </div>
+                <div class="transaction-filters__field">
+                    <label class="transaction-form__field">
+                        <span>Danh mục</span>
+                        <select id="transactionCategoryFilter">
+                            <option value="">Tất cả danh mục</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="transaction-form__field" style="flex: 0 0 auto; align-self: flex-end;">
+                    <button class="button button--ghost" id="transactionResetFilters" type="button">Đặt lại</button>
+                </div>
+            </div>
+        </section>
+    </section>
 
-    <input type="date" id="transactionDateFrom" />
-    <input type="date" id="transactionDateTo" />
-
-    <select id="transactionCategoryFilter">
-        <option value="">Tất cả danh mục</option>
-    </select>
-
-    <button id="transactionResetFilters">Đặt lại</button>
-</div>
-
-<table id="transactionTable" border="1" style="width:100%; border-collapse:collapse;">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Date</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Amount</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody id="transactionBody"></tbody>
-</table>
+    <section class="card">
+        <div class="section-heading">
+            <h2 class="section-heading__title">Danh sách giao dịch</h2>
+            <p class="section-heading__subtitle">Theo dõi trạng thái các giao dịch mới nhất, chỉnh sửa hoặc xoá khi cần.</p>
+        </div>
+        <div class="transaction-table-wrapper">
+            <table id="transactionTable" class="transaction-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ngày giao dịch</th>
+                    <th>Mô tả</th>
+                    <th>Danh mục</th>
+                    <th>Loại</th>
+                    <th>Số tiền</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody id="transactionBody" data-role="transaction-body"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
 
 <dialog id="transactionEditor">
-    <form id="transactionEditForm">
-        <h2>Chỉnh sửa giao dịch</h2>
-        <label>
-            Mô tả
-            <input type="text" name="description" required />
-        </label>
-        <label>
-            Loại giao dịch
-            <select name="type">
-                <option value="INCOME">INCOME</option>
-                <option value="EXPENSE">EXPENSE</option>
+    <form id="transactionEditForm" class="transaction-form">
+        <h2 data-role="transaction-edit-title">Chỉnh sửa giao dịch</h2>
+        <div class="transaction-form__field" style="grid-column: 1 / -1;">
+            <label for="transactionEditDescription">Mô tả</label>
+            <input id="transactionEditDescription" type="text" name="description" required />
+        </div>
+        <div class="transaction-form__field">
+            <label for="transactionEditCategory">Danh mục</label>
+            <input id="transactionEditCategory" type="text" name="category" />
+        </div>
+        <div class="transaction-form__field">
+            <label for="transactionEditType">Loại giao dịch</label>
+            <select id="transactionEditType" name="type">
+                <option value="INCOME">Thu nhập</option>
+                <option value="EXPENSE">Chi tiêu</option>
             </select>
-        </label>
-        <label>
-            Số tiền
-            <input type="number" name="amount" step="0.01" required />
-        </label>
-        <label>
-            Ngày giao dịch
-            <input type="date" name="transactionDate" />
-        </label>
+        </div>
+        <div class="transaction-form__field">
+            <label for="transactionEditAmount">Số tiền</label>
+            <input id="transactionEditAmount" type="number" name="amount" step="0.01" min="0" required />
+        </div>
+        <div class="transaction-form__field">
+            <label for="transactionEditDate">Ngày giao dịch</label>
+            <input id="transactionEditDate" type="date" name="transactionDate" />
+        </div>
         <menu>
-            <button type="button" data-action="cancel-edit">Huỷ</button>
-            <button type="submit">Lưu</button>
+            <button class="button button--ghost" type="button" data-action="cancel-edit">Huỷ</button>
+            <button class="button button--primary" type="submit">Lưu</button>
         </menu>
     </form>
 </dialog>
+
+<script type="module" src="js/pages/transactionPage.js"></script>
+</body>
+</html>
