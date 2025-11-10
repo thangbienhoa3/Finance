@@ -3,134 +3,124 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bảng thông tin chi tiết | Dooto Finance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Giao dịch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        #statusMessage[hidden] {
+            display: none;
+        }
+
+        #statusMessage {
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        .actions button {
+            margin-right: 0.5rem;
+        }
+
+        dialog form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-width: 260px;
+        }
+
+        dialog label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        dialog menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+            padding: 0;
+        }
+    </style>
 </head>
-<body class="app-body">
-<div class="app-shell">
-    <header class="app-header">
-        <a class="app-header__brand" href="home.html">
-            <span>₿</span>
-            <div>
-                <strong>Dooto Finance</strong><br>
-                <small>Bảng điều khiển thời gian thực</small>
-            </div>
-        </a>
-        <nav class="app-header__nav">
-            <a href="home.html">Trang chủ</a>
-            <a href="#reports">Báo cáo</a>
-            <a href="#transactions">Giao dịch</a>
-        </nav>
-        <div class="app-header__actions">
-            <button class="quick-action">Xuất báo cáo</button>
-            <details class="user-menu">
-                <summary>
-                    <span class="user-menu__avatar">NT</span>
-                </summary>
-                <div class="user-menu__panel">
-                    <div>
-                        <div class="user-menu__name">Nguyễn Thuý</div>
-                        <div class="user-menu__email">nguyenthuy@dooto.finance</div>
-                    </div>
-                    <a class="user-menu__link" href="profile.html">Trang cá nhân</a>
-                    <a class="user-menu__link" href="home.html">Trang chủ phân tích</a>
-                    <a class="user-menu__link" href="login.html">Đăng xuất</a>
-                </div>
-            </details>
-        </div>
-    </header>
 
-    <main class="dashboard-page" id="reports">
-        <section class="dashboard-cards">
-            <article class="dashboard-card">
-                <span>Thu nhập ròng</span>
-                <strong>54.250.000đ</strong>
-                <span>+ 6,8% so với tháng trước</span>
-            </article>
-            <article class="dashboard-card">
-                <span>Tổng chi tiêu</span>
-                <strong>27.940.000đ</strong>
-                <span>- 4,2% so với tháng trước</span>
-            </article>
-            <article class="dashboard-card">
-                <span>Quỹ khẩn cấp</span>
-                <strong>135.000.000đ</strong>
-                <span>Đủ chi trả 8 tháng sinh hoạt</span>
-            </article>
-            <article class="dashboard-card">
-                <span>Tỷ lệ nợ / thu nhập</span>
-                <strong>23%</strong>
-                <span>An toàn so với mức khuyến nghị</span>
-            </article>
-        </section>
+<body>
+<h1>Danh sách giao dịch</h1>
 
-        <section class="dashboard-table" id="transactions">
-            <table>
-                <thead>
-                <tr>
-                    <th>Ngày</th>
-                    <th>Mô tả</th>
-                    <th>Danh mục</th>
-                    <th>Trạng thái</th>
-                    <th>Số tiền</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>12/09/2024</td>
-                    <td>Lương công ty Dooto</td>
-                    <td>Thu nhập</td>
-                    <td><span class="tag tag--income">Đã nhận</span></td>
-                    <td>+ 32.500.000đ</td>
-                </tr>
-                <tr>
-                    <td>11/09/2024</td>
-                    <td>Đầu tư quỹ ETF</td>
-                    <td>Đầu tư</td>
-                    <td><span class="tag tag--expense">Đã khớp</span></td>
-                    <td>- 5.000.000đ</td>
-                </tr>
-                <tr>
-                    <td>10/09/2024</td>
-                    <td>Thanh toán học phí</td>
-                    <td>Giáo dục</td>
-                    <td><span class="tag tag--expense">Đã trừ</span></td>
-                    <td>- 7.500.000đ</td>
-                </tr>
-                <tr>
-                    <td>09/09/2024</td>
-                    <td>Tiền thưởng quý</td>
-                    <td>Thu nhập</td>
-                    <td><span class="tag tag--income">Đã nhận</span></td>
-                    <td>+ 12.800.000đ</td>
-                </tr>
-                <tr>
-                    <td>08/09/2024</td>
-                    <td>Chi tiêu gia đình</td>
-                    <td>Sinh hoạt</td>
-                    <td><span class="tag tag--expense">Đã đối soát</span></td>
-                    <td>- 3.450.000đ</td>
-                </tr>
-                <tr>
-                    <td>07/09/2024</td>
-                    <td>Nhận cổ tức VNDiamond</td>
-                    <td>Đầu tư</td>
-                    <td><span class="tag tag--income">Đã nhận</span></td>
-                    <td>+ 2.150.000đ</td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="dashboard-footer">
-                <span>Hiển thị 6 giao dịch gần nhất</span>
-                <a class="user-menu__link" href="#">Xem tất cả</a>
-            </div>
-        </section>
-    </main>
+<p id="statusMessage" hidden></p>
+<div class="filters">
+    <input id="transactionSearch" placeholder="Tìm theo mô tả..." />
 
-    <footer class="app-footer">
-        © 2024 Dooto Finance. Mọi dữ liệu được mã hoá an toàn.
-    </footer>
+    <select id="transactionTypeFilter">
+        <option value="">Tất cả loại</option>
+        <option value="INCOME">Thu nhập</option>
+        <option value="EXPENSE">Chi tiêu</option>
+    </select>
+
+    <input type="date" id="transactionDateFrom" />
+    <input type="date" id="transactionDateTo" />
+
+    <select id="transactionCategoryFilter">
+        <option value="">Tất cả danh mục</option>
+    </select>
+
+    <button id="transactionResetFilters">Đặt lại</button>
 </div>
-</body>
-</html>
+
+<table id="transactionTable" border="1" style="width:100%; border-collapse:collapse;">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody id="transactionBody"></tbody>
+</table>
+
+<dialog id="transactionEditor">
+    <form id="transactionEditForm">
+        <h2>Chỉnh sửa giao dịch</h2>
+        <label>
+            Mô tả
+            <input type="text" name="description" required />
+        </label>
+        <label>
+            Loại giao dịch
+            <select name="type">
+                <option value="INCOME">INCOME</option>
+                <option value="EXPENSE">EXPENSE</option>
+            </select>
+        </label>
+        <label>
+            Số tiền
+            <input type="number" name="amount" step="0.01" required />
+        </label>
+        <label>
+            Ngày giao dịch
+            <input type="date" name="transactionDate" />
+        </label>
+        <menu>
+            <button type="button" data-action="cancel-edit">Huỷ</button>
+            <button type="submit">Lưu</button>
+        </menu>
+    </form>
+</dialog>
