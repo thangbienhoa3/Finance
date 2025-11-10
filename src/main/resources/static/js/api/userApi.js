@@ -74,7 +74,7 @@ async function listUsers() {
     return requestJson(`${API_BASE}/users`, { method: "GET" });
 }
 
-async function getUserByUsername(username) {
+export async function getUserByUsername(username) {
     if (!username) {
         return {
             ok: false,

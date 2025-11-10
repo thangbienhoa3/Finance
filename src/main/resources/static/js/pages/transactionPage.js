@@ -5,7 +5,7 @@ import {
     createTransaction
 } from "../api/transactionApi.js";
 
-import { loadUser } from "../utils/storageUtils.js";
+import { getUser } from "../utils/storageUtils.js";
 import { getUserByUsername } from "../api/userApi.js";
 
 /* ========================= GLOBAL STATE ========================= */
@@ -38,7 +38,7 @@ const elements = {
 
 /* ========================= LOAD USER ID ========================= */
 async function loadCurrentUserId() {
-    const username = loadUser();
+    const username = getUser();
     if (!username) {
         showMessage("Bạn chưa đăng nhập!", "error");
         return null;
@@ -280,6 +280,7 @@ function bindCreateForm() {
             type: f.type.value,
             transactionDate: f.transactionDate.value || null
         };
+        console.log("Creating transaction with payload:", payload);
 
         showCreateStatus("Đang tạo...", "info");
 
@@ -383,7 +384,7 @@ async function init() {
     bindEditorEvents();
     bindCreateForm();
 
-    loadTransactions();
+    await loadTransactions();
 }
 
 function bindFilterEvents() {
