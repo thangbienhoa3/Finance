@@ -90,4 +90,8 @@ public class TransactionService {
     private LocalDate defaultDate(LocalDate date) {
         return date == null ? LocalDate.now() : date;
     }
+
+    public List<Transaction> getTransactionByUserId(Long userId) {
+        return  transactionRepository.findByUserId(userId);
+    }
 }

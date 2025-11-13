@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -35,6 +36,11 @@ public class UserService {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found: " + userId));
     }
 
+    public User getUserByUsername(String username) {
+        if (username == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username is required");
+        return userRepository.findByUsername(username).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found: " + username));
+    }
     public Iterable<User> getAllUser() {
         return userRepository.findAll();
     }

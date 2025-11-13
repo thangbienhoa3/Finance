@@ -42,8 +42,8 @@ async function request(method, path, body) {
     return response.text();
 }
 
-export function fetchTransactions() {
-    return request("GET", "/api/transactions");
+export function fetchTransactions(userid) {
+    return request("GET", `/api/transactions/${userid}`);
 }
 
 export function createTransaction(payload) {

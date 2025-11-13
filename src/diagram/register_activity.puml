@@ -1,0 +1,37 @@
+@startuml
+title Activity Diagram - Đăng ký tài khoản (SmartPocket)
+start
+:Người dùng truy
+cập trang đăng ký;
+:Nhập thông tin (Tên,
+Email, Mật khẩu,
+Xác nhận mật khẩu);
+
+if (Thiếu thông tin?) then (Có)
+  :Hiển thị thông báo
+  "Vui lòng nhập
+  đầy đủ thông tin";
+  stop
+else (Không)
+  if (Email đã tồn tại?) then (Có)
+    :Hiển thị thông báo
+    "Email đã
+    được đăng ký";
+    stop
+  else (Không)
+    if (Mật khẩu xác nhận
+    không khớp?) then (Có)
+      :Hiển thị thông báo
+      "Mật khẩu xác
+      nhận không khớp";
+      stop
+    else (Không)
+      :Lưu thông tin vào CSDL;
+      :Tạo tài khoản mới;
+      :Hiển thị
+      "Đăng ký thành công";
+    endif
+  endif
+endif
+stop
+@enduml

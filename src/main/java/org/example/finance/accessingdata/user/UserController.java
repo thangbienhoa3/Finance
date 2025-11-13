@@ -30,6 +30,18 @@ public class UserController {
         service.changePassword(userId, request);
         return "Password updated successfully!";
     }
+
+
+    @GetMapping("/{userId}")
+    public User getUserByUserId(@PathVariable Long userId) {
+        return service.getUserOrThrow(userId);
+    }
+
+    @GetMapping("/by-username/{username}")
+    public User getUserByUsername(@PathVariable String username) {
+        return service.getUserByUsername(username);
+    }
+
     @GetMapping
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users

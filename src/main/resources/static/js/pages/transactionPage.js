@@ -43,16 +43,15 @@ async function loadCurrentUserId() {
         showMessage("Bạn chưa đăng nhập!", "error");
         return null;
     }
-
     try {
         const response = await getUserByUsername(username);
-
+        console.log(response);
         if (!response.ok) {
             showMessage("Không thể tải thông tin người dùng!", "error");
             return null;
         }
 
-        const user = response.data; // ✅ userApi.js trả user trong data
+        const user = response.data; // userApi.js trả user trong data
         state.currentUserId = user.id;
 
         if (elements.hiddenUserId) {
@@ -273,7 +272,7 @@ function bindCreateForm() {
         }
 
         const payload = {
-            userId: state.currentUserId,   // ✅ FIX QUAN TRỌNG
+            userId: state.currentUserId,
             description: f.description.value.trim(),
             category: f.category.value.trim() || null,
             amount: Math.abs(amountValue),
@@ -360,8 +359,8 @@ function bindEditorEvents() {
 async function loadTransactions() {
     try {
         showMessage("Đang tải dữ liệu...", "info");
-
-        const data = await fetchTransactions();
+        const uid = state.currentUserId;
+        const data = await fetchTransactions(uid);
         state.transactions = sortTransactions(data || []);
 
         populateCategoryFilter();

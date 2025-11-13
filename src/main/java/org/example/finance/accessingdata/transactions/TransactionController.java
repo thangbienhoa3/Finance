@@ -20,9 +20,11 @@ public class TransactionController {
     public TransactionController(TransactionService service) {
         this.service = service;
     }
-    @GetMapping
-    public List<Transaction> getAll() {
-        return service.getAllTransactions();
+
+    @GetMapping("/{userId}")
+    public List<Transaction> getAll(@PathVariable Long userId) {
+        System.out.println(userId);
+        return service.getTransactionByUserId(userId);
     }
 
     @PostMapping

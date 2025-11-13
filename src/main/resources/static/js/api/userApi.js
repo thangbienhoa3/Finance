@@ -83,25 +83,17 @@ export async function getUserByUsername(username) {
             message: "Thiếu tên đăng nhập để tải thông tin người dùng."
         };
     }
-
-    const response = await listUsers();
-    if (!response.ok) {
-        return response;
+    // console.log(username);
+    try {
+        const res = await fetch(`${API_BASE}/users/by-username/${username}`);
+        if (!res.ok) {
+            return { ok: false, message: "User not found" };
+        }
+        const data = await res.json();
+        return { ok: true, data };
+    } catch (err) {
+        return { ok: false, message: err.message };
     }
-
-    const users = Array.isArray(response.data) ? response.data : [];
-    const user = users.find((item) => item && item.username === username);
-
-    if (!user) {
-        return {
-            ok: false,
-            status: 404,
-            data: null,
-            message: "Không tìm thấy người dùng trên hệ thống."
-        };
-    }
-
-    return { ok: true, status: 200, data: user };
 }
 
 async function updateUser(userId, payload) {
