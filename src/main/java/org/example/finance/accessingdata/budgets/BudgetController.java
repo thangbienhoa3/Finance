@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("api/budgets")
 @CrossOrigin(origins = "http://localhost:8080")
 public class BudgetController {
