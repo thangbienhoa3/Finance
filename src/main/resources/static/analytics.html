@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Báo cáo &amp; ngân sách</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="app-body">
+<div class="app-shell">
+    <header class="app-header">
+        <a class="app-header__brand" href="home.html">
+            <span>₿</span>
+            <div>
+                <strong>Dooto Finance</strong><br />
+                <small>Báo cáo chi tiêu</small>
+            </div>
+        </a>
+        <nav class="app-header__nav">
+            <a href="dashboard.html">Giao dịch</a>
+            <a href="analytics.html" aria-current="page">Báo cáo</a>
+            <a href="profile.html">Hồ sơ</a>
+        </nav>
+        <div class="app-header__actions">
+            <div class="summary-chip" data-role="alert-chip" hidden></div>
+        </div>
+    </header>
+
+    <main class="app-main analytics-layout">
+        <section class="card-grid">
+            <div class="card kpi-card">
+                <header class="kpi-header">
+                    <div>
+                        <p class="kpi-subtitle">Khoảng thời gian</p>
+                        <h2 class="kpi-title">Thống kê chi tiêu</h2>
+                    </div>
+                    <label class="kpi-filter">
+                        <span>Khoảng thống kê</span>
+                        <select id="reportRange">
+                            <option value="WEEK">Tuần này</option>
+                            <option value="MONTH" selected>Tháng này</option>
+                            <option value="YEAR">Năm nay</option>
+                        </select>
+                    </label>
+                </header>
+                <div class="kpi-grid">
+                    <div class="kpi-item">
+                        <p class="kpi-subtitle">Tổng thu</p>
+                        <div class="kpi-value" data-role="total-income">--</div>
+                        <small data-role="range-label"></small>
+                    </div>
+                    <div class="kpi-item">
+                        <p class="kpi-subtitle">Tổng chi</p>
+                        <div class="kpi-value kpi-value--danger" data-role="total-expense">--</div>
+                        <small data-role="range-label"></small>
+                    </div>
+                    <div class="kpi-item">
+                        <p class="kpi-subtitle">Cân đối</p>
+                        <div class="kpi-value" data-role="net-balance">--</div>
+                        <small data-role="range-label"></small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card chart-card">
+                <header class="chart-header">
+                    <h3>Biểu đồ chi tiêu theo danh mục</h3>
+                    <p class="chart-subtitle">Cột thể hiện tỷ lệ chi tiêu</p>
+                </header>
+                <div class="bar-chart" data-role="category-chart"></div>
+            </div>
+        </section>
+
+        <section class="card-grid">
+            <div class="card budget-card">
+                <header class="chart-header">
+                    <div>
+                        <h3>Thiết lập ngân sách</h3>
+                        <p class="chart-subtitle">Đặt ngưỡng chi tiêu và mức số dư an toàn</p>
+                    </div>
+                </header>
+                <form id="budgetForm" class="budget-form">
+                    <label>
+                        <span>Chu kỳ ngân sách</span>
+                        <select name="period" required>
+                            <option value="MONTH">Theo tháng</option>
+                            <option value="WEEK">Theo tuần</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Ngưỡng chi tiêu (VND)</span>
+                        <input type="number" name="amount" min="0" step="0.01" required placeholder="10,000,000" />
+                    </label>
+                    <label>
+                        <span>Số dư an toàn tối thiểu (VND)</span>
+                        <input type="number" name="safeBalance" min="0" step="0.01" placeholder="2,000,000" />
+                    </label>
+                    <div class="form-actions">
+                        <button type="submit" class="button button--primary">Lưu ngân sách</button>
+                        <p class="form-hint" data-role="budget-status"></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card alert-card">
+                <header class="chart-header">
+                    <div>
+                        <h3>Cảnh báo &amp; tổng quan ngân sách</h3>
+                        <p class="chart-subtitle">Theo dõi mức chi tiêu thực tế</p>
+                    </div>
+                </header>
+                <div class="alert-summary">
+                    <div>
+                        <p class="kpi-subtitle">Chi tiêu thực tế</p>
+                        <div class="kpi-value" data-role="actual-expense">--</div>
+                        <small data-role="budget-range"></small>
+                    </div>
+                    <div>
+                        <p class="kpi-subtitle">Còn lại</p>
+                        <div class="kpi-value" data-role="budget-remaining">--</div>
+                        <small>so với ngưỡng đã đặt</small>
+                    </div>
+                    <div>
+                        <p class="kpi-subtitle">Cân đối thu - chi</p>
+                        <div class="kpi-value" data-role="budget-net">--</div>
+                        <small>Sau khi tính thu nhập</small>
+                    </div>
+                </div>
+                <div class="alert-panel" data-role="alert-panel"></div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script type="module" src="js/pages/analyticsPage.js"></script>
+</body>
+</html>
