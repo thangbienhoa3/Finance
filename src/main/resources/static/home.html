@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bảng điều khiển tài chính | Dooto Finance</title>
+    <title>Tổng quan tài chính | Dooto Finance</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,20 +18,20 @@
             </div>
         </a>
         <nav class="app-header__nav">
-            <a href="#overview">Tổng quan</a>
-            <a href="#charts">Biểu đồ</a>
-            <a href="#goals">Mục tiêu</a>
+            <a href="#snapshot">Ảnh chụp</a>
+            <a href="#insights">Dòng tiền</a>
+            <a href="#budgets">Ngân sách</a>
         </nav>
         <div class="app-header__actions">
-            <button class="quick-action">+ Giao dịch mới</button>
+            <button class="quick-action">+ Ghi nhận giao dịch</button>
             <details class="user-menu">
                 <summary>
-                    <span class="user-menu__avatar">NT</span>
+                    <span class="user-menu__avatar" data-role="user-avatar">--</span>
                 </summary>
                 <div class="user-menu__panel">
                     <div>
-                        <div class="user-menu__name">Nguyễn Thuý</div>
-                        <div class="user-menu__email">nguyenthuy@dooto.finance</div>
+                        <div class="user-menu__name" data-role="user-name">Đang tải...</div>
+                        <div class="user-menu__email" data-role="user-email">--</div>
                     </div>
                     <a class="user-menu__link" href="profile.html">Trang cá nhân</a>
                     <a class="user-menu__link" href="dashboard.html">Bảng thông tin</a>
@@ -42,170 +42,188 @@
     </header>
 
     <main class="app-main">
-        <section class="overview-grid" id="overview">
-            <article class="overview-card">
-                <span>Số dư ví tổng</span>
-                <div class="overview-value">98.450.000đ <span class="overview-chip">+12,4%</span></div>
-                <span>Cập nhật 15 phút trước</span>
-            </article>
-            <article class="overview-card">
-                <span>Chi tiêu tháng này</span>
-                <div class="overview-value">21.860.000đ <span class="overview-chip">-8,1%</span></div>
-                <span>So với cùng kỳ tháng trước</span>
-            </article>
-            <article class="overview-card">
-                <span>Doanh thu thụ động</span>
-                <div class="overview-value">12.300.000đ <span class="overview-chip">+4,5%</span></div>
-                <span>Từ lãi tiết kiệm &amp; cổ tức</span>
-            </article>
-            <article class="overview-card">
-                <span>Tỷ lệ tiết kiệm</span>
-                <div class="overview-value">34% <span class="overview-chip">+3%</span></div>
-                <span>Trên tổng thu nhập tháng</span>
-            </article>
-        </section>
-
-        <section class="insights-layout" id="charts">
-            <div class="dashboard-grid">
-                <article class="chart-card">
-                    <header>
-                        <h2 class="chart-title">Xu hướng giao dịch</h2>
-                        <span class="chart-filter">6 tháng gần nhất</span>
-                    </header>
-                    <div class="chart-illustration">
-                        <div class="sparkline">
-                            <svg viewBox="0 0 400 180" preserveAspectRatio="none">
-                                <polyline fill="none" stroke="#6366f1" stroke-width="6" stroke-linecap="round"
-                                          points="0,140 60,120 110,150 160,80 210,100 260,60 320,90 380,40" />
-                                <polyline fill="rgba(129, 140, 248, 0.25)" stroke="rgba(129, 140, 248, 0.3)" stroke-width="0"
-                                          points="0,140 60,120 110,150 160,80 210,100 260,60 320,90 380,40 380,180 0,180" />
-                            </svg>
-                        </div>
+        <section class="summary-hero" id="snapshot">
+            <div class="summary-meta">
+                <div class="pill pill--primary">Bản tin tài chính cá nhân</div>
+                <div class="meta-inline">
+                    <span data-role="report-range">Kỳ báo cáo: --</span>
+                    <span class="pill pill--ghost" data-role="report-updated">Đang đồng bộ...</span>
+                </div>
+            </div>
+            <div class="summary-highlight">
+                <div>
+                    <p class="summary-label">Dòng tiền ròng kỳ</p>
+                    <div class="summary-value" data-role="net-balance">--</div>
+                    <p class="summary-sub" data-role="net-note">Bao gồm tất cả thu nhập và chi tiêu đã ghi nhận</p>
+                </div>
+                <div class="summary-breakdown">
+                    <div>
+                        <span>Tài sản</span>
+                        <strong data-role="total-income">--</strong>
                     </div>
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <strong>Tổng giao dịch</strong>
-                            <span>+ 1.250 giao dịch</span>
-                        </div>
-                        <div class="activity-item">
-                            <strong>Chi tiêu trung bình</strong>
-                            <span>3.100.000đ / tuần</span>
-                        </div>
-                        <div class="activity-item">
-                            <strong>Tỷ lệ hoàn tiền</strong>
-                            <span>9,3%</span>
-                        </div>
+                    <div>
+                        <span>Nợ phải trả</span>
+                        <strong data-role="total-expense">--</strong>
+                    </div>
+                    <div class="separation"></div>
+                    <div>
+                        <span>Số giao dịch</span>
+                        <strong data-role="transaction-count">--</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="kpi-grid">
+                <article class="stat-card">
+                    <div class="stat-header">
+                        <span>Thu nhập</span>
+                        <span class="delta delta--positive" data-role="income-change">--</span>
+                    </div>
+                    <div class="stat-value" data-role="kpi-income">--</div>
+                    <p class="stat-sub">Tổng thu nhập đã ghi nhận</p>
+                    <div class="stat-bar">
+                        <div class="stat-bar__fill" data-role="income-bar" style="width: 0"></div>
                     </div>
                 </article>
-
-                <article class="chart-card">
-                    <header>
-                        <h2 class="chart-title">Chi tiêu theo danh mục</h2>
-                        <span class="chart-filter">Tháng 09</span>
-                    </header>
-                    <div class="chart-illustration">
-                        <svg viewBox="0 0 200 200">
-                            <circle cx="100" cy="100" r="70" fill="rgba(203, 213, 225, 0.35)" />
-                            <path d="M100 30 A70 70 0 0 1 178 124 L100 100Z" fill="#f97316" />
-                            <path d="M178 124 A70 70 0 0 1 52 168 L100 100Z" fill="#6366f1" />
-                            <path d="M52 168 A70 70 0 0 1 100 30 L100 100Z" fill="#22d3ee" />
-                        </svg>
+                <article class="stat-card">
+                    <div class="stat-header">
+                        <span>Chi tiêu</span>
+                        <span class="delta delta--negative" data-role="expense-change">--</span>
                     </div>
-                    <div class="progress-list">
-                        <div class="progress-item">
-                            <div class="progress-label">
-                                <strong>Gia đình &amp; sinh hoạt</strong>
-                                <span>42%</span>
-                            </div>
-                            <div class="progress-bar"><div class="progress-value" style="width: 42%"></div></div>
-                        </div>
-                        <div class="progress-item">
-                            <div class="progress-label">
-                                <strong>Đầu tư &amp; tích luỹ</strong>
-                                <span>33%</span>
-                            </div>
-                            <div class="progress-bar"><div class="progress-value" style="width: 33%"></div></div>
-                        </div>
-                        <div class="progress-item">
-                            <div class="progress-label">
-                                <strong>Phong cách sống</strong>
-                                <span>25%</span>
-                            </div>
-                            <div class="progress-bar"><div class="progress-value" style="width: 25%"></div></div>
-                        </div>
+                    <div class="stat-value" data-role="kpi-expense">--</div>
+                    <p class="stat-sub">Tổng chi tiêu đã ghi nhận</p>
+                    <div class="stat-bar stat-bar--orange">
+                        <div class="stat-bar__fill" data-role="expense-bar" style="width: 0"></div>
                     </div>
                 </article>
-
-                <article class="activity-card">
-                    <header>
-                        <h2 class="chart-title">Nhắc nhở hôm nay</h2>
-                        <span class="chart-filter">04 nhiệm vụ</span>
-                    </header>
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <span>Thanh toán hoá đơn điện nước</span>
-                            <span class="activity-amount">- 1.250.000đ</span>
-                        </div>
-                        <div class="activity-item">
-                            <span>Chuyển 5% lương vào quỹ tiết kiệm</span>
-                            <span class="activity-amount">+ 2.150.000đ</span>
-                        </div>
-                        <div class="activity-item">
-                            <span>Tái cân bằng danh mục đầu tư</span>
-                            <span class="activity-amount">Đang chờ</span>
-                        </div>
-                        <div class="activity-item">
-                            <span>Gia hạn bảo hiểm sức khoẻ</span>
-                            <span class="activity-amount">- 860.000đ</span>
-                        </div>
+                <article class="stat-card">
+                    <div class="stat-header">
+                        <span>Tỷ lệ tiết kiệm</span>
+                        <span class="delta delta--positive" data-role="saving-delta">--</span>
+                    </div>
+                    <div class="stat-value" data-role="saving-rate">--</div>
+                    <p class="stat-sub">Phần trăm thu nhập còn lại sau chi tiêu</p>
+                    <div class="stat-bar stat-bar--teal">
+                        <div class="stat-bar__fill" data-role="saving-bar" style="width: 0"></div>
+                    </div>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-header">
+                        <span>Ghi nhận mới</span>
+                        <span class="delta delta--positive" data-role="recent-change">--</span>
+                    </div>
+                    <div class="stat-value" data-role="recent-count">--</div>
+                    <p class="stat-sub">Giao dịch mới nhất trong tuần</p>
+                    <div class="stat-bar stat-bar--purple">
+                        <div class="stat-bar__fill" data-role="recent-bar" style="width: 0"></div>
                     </div>
                 </article>
             </div>
+        </section>
 
-            <aside class="side-panel" id="goals">
-                <article class="goal-card">
+        <section class="insights-row" id="insights">
+            <article class="chart-card chart-card--wide">
+                <header>
                     <div>
-                        <span>Mục tiêu chính</span>
-                        <strong>Quỹ mua nhà</strong>
+                        <p class="chart-subtitle">Tổng quan dòng tiền</p>
+                        <h2 class="chart-title">Thu nhập vs Chi tiêu</h2>
                     </div>
-                    <p>Đã tích luỹ được 420.000.000đ trong mục tiêu 600.000.000đ.</p>
-                    <div class="progress-bar"><div class="progress-value" style="width: 70%"></div></div>
-                    <div class="progress-label">
-                        <span>Tiến độ</span>
-                        <strong>70%</strong>
+                    <div class="pill pill--ghost" data-role="cashflow-range">6 tháng gần nhất</div>
+                </header>
+                <div class="chart-illustration chart-illustration--line" data-role="cashflow-chart"></div>
+                <div class="legend-grid">
+                    <div class="legend-item">
+                        <span class="dot dot--green"></span>
+                        <div>
+                            <strong>Thu nhập trung bình</strong>
+                            <p data-role="avg-income">--</p>
+                        </div>
                     </div>
-                </article>
+                    <div class="legend-item">
+                        <span class="dot dot--orange"></span>
+                        <div>
+                            <strong>Chi tiêu trung bình</strong>
+                            <p data-role="avg-expense">--</p>
+                        </div>
+                    </div>
+                    <div class="legend-item">
+                        <span class="dot dot--purple"></span>
+                        <div>
+                            <strong>Tỷ lệ dư tiền</strong>
+                            <p data-role="avg-surplus">--</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-                <article class="budget-card">
-                    <header>
-                        <h2 class="chart-title">Ngân sách nhanh</h2>
-                    </header>
-                    <div class="budget-list">
-                        <div class="budget-item">
-                            <strong>Ăn uống &amp; siêu thị</strong>
-                            <span>5.200.000đ / 7.000.000đ</span>
-                        </div>
-                        <div class="budget-item">
-                            <strong>Di chuyển</strong>
-                            <span>1.150.000đ / 2.500.000đ</span>
-                        </div>
-                        <div class="budget-item">
-                            <strong>Giải trí</strong>
-                            <span>1.860.000đ / 3.000.000đ</span>
-                        </div>
-                        <div class="budget-item">
-                            <strong>Giáo dục</strong>
-                            <span>3.500.000đ / 5.500.000đ</span>
-                        </div>
+            <article class="chart-card">
+                <header>
+                    <div>
+                        <p class="chart-subtitle">Cơ cấu chi tiêu</p>
+                        <h2 class="chart-title">Danh mục lớn nhất</h2>
                     </div>
-                </article>
-            </aside>
+                    <div class="pill pill--ghost" data-role="category-range">Tháng này</div>
+                </header>
+                <div class="bar-chart" data-role="category-chart"></div>
+                <div class="summary-chip" data-role="category-note">Đang phân tích chi tiêu...</div>
+            </article>
+
+            <article class="chart-card">
+                <header>
+                    <div>
+                        <p class="chart-subtitle">Cảnh báo tài chính</p>
+                        <h2 class="chart-title">Điểm cần chú ý</h2>
+                    </div>
+                    <div class="pill pill--ghost">Theo dõi realtime</div>
+                </header>
+                <div class="alert-summary">
+                    <div class="alert-panel" data-role="alert-primary">Đang tải cảnh báo...</div>
+                    <div class="alert-panel alert-panel--safe" data-role="alert-secondary"></div>
+                    <div class="alert-panel" data-role="alert-tertiary"></div>
+                </div>
+                <div class="activity-list" data-role="recent-activity"></div>
+            </article>
+        </section>
+
+        <section class="insights-row" id="budgets">
+            <article class="chart-card">
+                <header>
+                    <div>
+                        <p class="chart-subtitle">Kế hoạch tiết kiệm</p>
+                        <h2 class="chart-title">Mục tiêu ưu tiên</h2>
+                    </div>
+                    <div class="pill pill--ghost">Thời hạn 18 tháng</div>
+                </header>
+                <div class="goal-list" data-role="goal-list"></div>
+            </article>
+
+            <article class="chart-card">
+                <header>
+                    <div>
+                        <p class="chart-subtitle">Ngân sách tháng</p>
+                        <h2 class="chart-title">Trạng thái sử dụng</h2>
+                    </div>
+                    <div class="pill pill--ghost" data-role="budget-range">Chu kỳ</div>
+                </header>
+                <div class="budget-list" data-role="budget-list"></div>
+            </article>
+
+            <article class="table-card">
+                <header class="table-card__header">
+                    <div>
+                        <p class="chart-subtitle">Lịch giao dịch</p>
+                        <h2 class="chart-title">Thanh toán &amp; thu nhập sắp tới</h2>
+                    </div>
+                    <div class="pill pill--ghost">7 ngày tiếp theo</div>
+                </header>
+                <div class="table-list" data-role="upcoming-list"></div>
+            </article>
         </section>
     </main>
 
     <footer class="app-footer">
-        © 2024 Dooto Finance. Đồng hành cùng bạn trên hành trình tự do tài chính.
+        © 2024 Dooto Finance. Dữ liệu được bảo vệ và đồng bộ trên mọi thiết bị.
     </footer>
 </div>
+<script type="module" src="js/pages/homePage.js"></script>
 </body>
 </html>
