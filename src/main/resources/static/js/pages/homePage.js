@@ -454,10 +454,10 @@ function updateAlerts(sortedTransactions) {
     setText(els.alertPrimary, spendingWarn);
 
     if (state.budgetStatus?.overBudget) {
-        setText(els.alertSecondary, "Cảnh báo: Ngân sách đã vượt giới hạn cho kỳ này.");
+        setText(els.alertSecondary, "Cảnh báo: Bạn đã chi tiêu vượt ngưỡng chi tiêu");
         els.alertSecondary.classList.remove("alert-panel--safe");
     } else if (state.budgetStatus?.unsafeBalance) {
-        setText(els.alertSecondary, "Số dư ròng thấp hơn mức an toàn bạn đặt.");
+        setText(els.alertSecondary, "Số dư thấp hơn mức an toàn bạn đặt.");
         els.alertSecondary.classList.remove("alert-panel--safe");
     } else if (state.budgetStatus) {
         setText(els.alertSecondary, "Ngân sách trong giới hạn an toàn.");
