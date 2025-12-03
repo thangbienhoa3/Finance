@@ -1,13 +1,17 @@
 package org.example.finance;
 
-import org.example.finance.accessingdata.transactions.*;
-import org.example.finance.accessingdata.user.*;
+import org.example.finance.accessingdata.transactions.dto.TransactionRequest;
+import org.example.finance.accessingdata.transactions.model.Transaction;
+import org.example.finance.accessingdata.transactions.model.TransactionType;
+import org.example.finance.accessingdata.transactions.repository.TransactionRepository;
+import org.example.finance.accessingdata.transactions.service.TransactionService;
+import org.example.finance.accessingdata.user.model.User;
+import org.example.finance.accessingdata.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.server.ResponseStatusException;
 

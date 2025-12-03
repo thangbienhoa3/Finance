@@ -16,6 +16,7 @@ const els = {
     userName: document.querySelector("[data-role=user-name]"),
     userEmail: document.querySelector("[data-role=user-email]"),
     userAvatar: document.querySelector("[data-role=user-avatar]"),
+    quickAction: document.querySelector(".quick-action"),
 
     reportRange: document.querySelector("[data-role=report-range]"),
     reportUpdated: document.querySelector("[data-role=report-updated]"),
@@ -563,7 +564,15 @@ function renderBudgetStatus() {
     }
 }
 
+
+
 async function init() {
+    if (els.quickAction) {
+        els.quickAction.addEventListener("click", () => {
+            window.location.href = "dashboard.html";
+        });
+    }
+
     const userId = await hydrateUser();
     if (!userId) return;
 

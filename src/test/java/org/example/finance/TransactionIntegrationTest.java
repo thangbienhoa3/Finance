@@ -1,14 +1,16 @@
 package org.example.finance;
 
-import org.example.finance.accessingdata.transactions.*;
-import org.example.finance.accessingdata.user.User;
-import org.example.finance.accessingdata.user.UserRepository;
+import org.example.finance.accessingdata.transactions.dto.TransactionRequest;
+import org.example.finance.accessingdata.transactions.model.Transaction;
+import org.example.finance.accessingdata.transactions.model.TransactionType;
+import org.example.finance.accessingdata.transactions.repository.TransactionRepository;
+import org.example.finance.accessingdata.transactions.service.TransactionService;
+import org.example.finance.accessingdata.user.model.User;
+import org.example.finance.accessingdata.user.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
