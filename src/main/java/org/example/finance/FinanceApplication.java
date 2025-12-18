@@ -7,8 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages = "org.example.finance.accessingdata")
-@EnableJpaRepositories(basePackages = "org.example.finance.accessingdata")
+@EntityScan(basePackages = "org.example.finance")
+@EnableJpaRepositories(basePackages = "org.example.finance")
 
 public class FinanceApplication {
 

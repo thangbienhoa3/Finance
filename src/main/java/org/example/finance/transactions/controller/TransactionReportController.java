@@ -1,0 +1,25 @@
+package org.example.finance.transactions.controller;
+
+
+import org.example.finance.transactions.dto.ReportRange;
+import org.example.finance.transactions.service.TransactionAnalyticsService;
+import org.example.finance.transactions.dto.TransactionSummaryResponse;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/transactions/report")
+@CrossOrigin(origins = "http://localhost:8080")
+public class TransactionReportController {
+
+    private final TransactionAnalyticsService analyticsService;
+
+    public TransactionReportController(TransactionAnalyticsService analyticsService) {
+        this.analyticsService = analyticsService;
+    }
+
+    @GetMapping
+    public TransactionSummaryResponse summarize(@RequestParam Long userId,
+                                                @RequestParam(defaultValue = "MONTH") ReportRange range) {
+        return analyticsService.summarize(userId, range);
+    }
+}

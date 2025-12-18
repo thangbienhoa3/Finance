@@ -1,12 +1,12 @@
 package org.example.finance;
 
-import org.example.finance.accessingdata.transactions.dto.TransactionRequest;
-import org.example.finance.accessingdata.transactions.model.Transaction;
-import org.example.finance.accessingdata.transactions.model.TransactionType;
-import org.example.finance.accessingdata.transactions.repository.TransactionRepository;
-import org.example.finance.accessingdata.transactions.service.TransactionService;
-import org.example.finance.accessingdata.user.model.User;
-import org.example.finance.accessingdata.user.repository.UserRepository;
+import org.example.finance.transactions.dto.TransactionRequest;
+import org.example.finance.transactions.model.Transaction;
+import org.example.finance.transactions.model.TransactionType;
+import org.example.finance.transactions.repository.TransactionRepository;
+import org.example.finance.transactions.service.TransactionService;
+import org.example.finance.user.model.User;
+import org.example.finance.user.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
