@@ -19,6 +19,7 @@
         </a>
 
         <div class="app-header__actions">
+            <a class="button button--ghost" href="analytics.html">Thống kê thu chi và thiết lập ngân sách</a>
             <button class="quick-action">+ Ghi nhận giao dịch</button>
             <details class="user-menu">
                 <summary>
@@ -54,18 +55,14 @@
                 </div>
                 <div class="summary-breakdown">
                     <div>
-                        <span>Tài sản</span>
+                        <span>Tổng thu nhập tháng</span>
                         <strong data-role="total-income">--</strong>
                     </div>
                     <div>
-                        <span>Nợ phải trả</span>
+                        <span>Tổng chi tiêu tháng</span>
                         <strong data-role="total-expense">--</strong>
                     </div>
                     <div class="separation"></div>
-                    <div>
-                        <span>Số giao dịch</span>
-                        <strong data-role="transaction-count">--</strong>
-                    </div>
                 </div>
             </div>
             <div class="kpi-grid">
@@ -75,18 +72,16 @@
                         <span class="delta delta--positive" data-role="income-change">--</span>
                     </div>
                     <div class="stat-value" data-role="kpi-income">--</div>
-                    <p class="stat-sub">Tổng thu nhập đã ghi nhận</p>
                     <div class="stat-bar">
                         <div class="stat-bar__fill" data-role="income-bar" style="width: 0"></div>
                     </div>
                 </article>
                 <article class="stat-card">
                     <div class="stat-header">
-                        <span>Chi tiêu </span>
+                        <span>Chi tiêu tháng</span>
                         <span class="delta delta--negative" data-role="expense-change">--</span>
                     </div>
                     <div class="stat-value" data-role="kpi-expense">--</div>
-                    <p class="stat-sub">Tổng chi tiêu đã ghi nhận</p>
                     <div class="stat-bar stat-bar--orange">
                         <div class="stat-bar__fill" data-role="expense-bar" style="width: 0"></div>
                     </div>
@@ -97,20 +92,19 @@
                         <span class="delta delta--positive" data-role="saving-delta">--</span>
                     </div>
                     <div class="stat-value" data-role="saving-rate">--</div>
-                    <p class="stat-sub">Phần trăm thu nhập còn lại sau chi tiêu</p>
                     <div class="stat-bar stat-bar--teal">
                         <div class="stat-bar__fill" data-role="saving-bar" style="width: 0"></div>
                     </div>
                 </article>
                 <article class="stat-card">
                     <div class="stat-header">
-                        <span>Ghi nhận mới</span>
+                        <span>Ghi nhận</span>
                         <span class="delta delta--positive" data-role="recent-change">--</span>
                     </div>
                     <div class="stat-value" data-role="recent-count">--</div>
                     <p class="stat-sub">Giao dịch mới nhất trong tuần</p>
                     <div class="stat-bar stat-bar--purple">
-                        <div class="stat-bar__fill" data-role="recent-bar" style="width: 0"></div>
+                        <div class="stat-bar__fill" data-role="recent-bar" style="  width: 0"></div>
                     </div>
                 </article>
             </div>
